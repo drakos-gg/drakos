@@ -1,0 +1,36 @@
+# v0.1.1
+
+**New features**
+
+- Overworld combat farming
+- Chocobo companion usage
+- v1 avoidance of A/S-ranks and boss FATEs during overworld farming
+- Configurable crafter scrip source selection
+- Icebrand: ephemeral solver.
+
+**Improvements**
+
+- Firebrand-fast: <50ms, ~6% average distortion ~23% 95th percentile distortion
+- Firebrand-mid: <500ms, ~2% average distortion ~8% 95th percentile distortion
+- Firebrand-long: 10 seconds, <0.1% average distortion.
+- Icebrand: No longer spends all GP on a single ephemeral node. Instead, it maps out allocates optimal GP across nodes, cordial-aware.
+- Solvers migrated to Rust-FFI for more robustness.
+
+**In progress**
+
+- Cosmic Exploration (work has begun)
+
+**Bug fixes**
+
+- Fix multi-zone gathering double teleport on crystals
+- Fix territory filter for multi-zone gathering items
+- Fix GP allocation for normal gather nodes suppressing crystal fallback
+- Fix ledger clamping causing intermediate overproduction on re-expansion
+- Fix quick synth robustness
+- Robustness on crafting detection due to gearset switch animation lock
+- Added more stabilization delay for RecipeNote closing
+- Fix GUI heartbeat killing idle external GUI connections
+- Rerouted heavy scheduler logic to background threads
+- Fix /drakos kill not immediately killing active solvers
+- Fix stale system.status updates
+- Major refactors
