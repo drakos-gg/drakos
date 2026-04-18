@@ -1,3 +1,39 @@
+# v0.1.2
+
+**New features**
+
+- New hook: inventory relief via collectable turn-in and scrip purchases
+
+**Improvements**
+
+- Travel system:
+  - Now supports Dravanian Hinterlands
+- Combat rotations: all combat jobs now have a basic combat rotation that is tuned for bursts rather than doing an opener.
+- Orchestration now automatically assigns combat grinding tasks for certain material
+- Orchestration now has a try-to-unstuck routine when it detects anomalies
+
+**Infrastructure**
+
+*Note: these additions set up the foundation for future work, but not all features have been implemented.*
+
+- Hooks: small tasks that run within an orchestration plan, like scrip purchasing and repairs
+- Travel system: infrastructure for multi-zone traveling, airships, ferries, and housing
+- Retainer inventory: infrastructure for smart retrieval from retainer inventory for undercutting and material retrieval
+
+**In progress**
+
+- Hook migrations to new hook system.
+- Cosmic exploration.
+
+**Fixes**
+
+- Gathering scrip grinding is now treated as a composite timed task.
+- Retainer inventory threading issues fixed
+- Gathering scrip grinding now detects nodes from visible range instead of surveying spots one by one.
+- Kill Rust solver threads when Drakos is undetected.
+- Combat now double weaves as intended.
+- Gathering scrip grind solver no longer runs on main thread.
+
 # v0.1.1
 
 **New features**
