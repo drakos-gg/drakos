@@ -1,72 +1,31 @@
-# v0.1.2
+# v0.1.5
 
 **New features**
 
-- New hook: inventory relief via collectable turn-in and scrip purchases
+- FC chest storage: Drakos can now stash items into the FC chest as part of inventory relief. (DRAK-116)
+- Per-NPC quest gating for NPC interaction hooks: Drakos checks each appraiser/scrip exchange/retainer NPC's unlock quest before routing the player there, and drops NPCs you haven't unlocked from the feasible set. (DRAK-164)
+- Ultrarapid hook tier: sprint and cordial-during-travel now run as a peer to rapid/long hooks, polled directly while pathfinding for faster reaction and to close a long-standing race with the teleport queue that produced "Not yet ready" cordial rejections. (DRAK-189)
+- NPC stop randomization: Drakos stops ~2 yalms shy of NPCs in cities on the final walk leg, so it looks like a player walking up rather than teleporting onto a vendor's head. (DRAK-174)
 
 **Improvements**
 
-- Travel system:
-  - Now supports Dravanian Hinterlands
-- Combat rotations: all combat jobs now have a basic combat rotation that is tuned for bursts rather than doing an opener.
-- Orchestration now automatically assigns combat grinding tasks for certain material
-- Orchestration now has a try-to-unstuck routine when it detects anomalies
-
-**Infrastructure**
-
-*Note: these additions set up the foundation for future work, but not all features have been implemented.*
-
-- Hooks: small tasks that run within an orchestration plan, like scrip purchasing and repairs
-- Travel system: infrastructure for multi-zone traveling, airships, ferries, and housing
-- Retainer inventory: infrastructure for smart retrieval from retainer inventory for undercutting and material retrieval
-
-**In progress**
-
-- Hook migrations to new hook system.
-- Cosmic exploration.
+- Travel:
+  - Aethernet hopping is production-ready and territory-aware. The catalog now covers paired-zone cities (Limsa Upper Decks, Steps of Thal, Old Gridania, The Pillars), and Drakos picks shards that are actually reachable from your current territory. Arrival now uses the live shard entity position when it's loaded (cached `AetheryteData.Position` is MapMarker-derived with Y=0 and was missing arrivals at places like Steps of Thal and Saint Reymanaud's Cathedral). The arrival radius is bumped to 12y and Drakos waits for the new mesh to load before walking the last leg. (DRAK-39, DRAK-173)
+  - Cold-mesh flying travel no longer stalls ~8s between mount cast and motion start. The precomputed plan goes straight to vnavmesh's `Path.MoveTo` instead of getting recomputed inside `SimpleMove.PathfindAndMoveTo`. (DRAK-7)
+  - Cordial drains before the nav watcher opens so the entry shot completes before any teleport queueing, removing the race that produced status 582 "Not yet ready" rejections. (DRAK-7)
+  - NPC offset walk now retries the exact target on transient walk failures (vnavmesh occasionally refuses to pathfind to walkable offset points in tight city geometry), and propagates `/drakos kill` cancellation cleanly through the offset fallback. (DRAK-174)
 
 **Fixes**
 
-- Gathering scrip grinding is now treated as a composite timed task.
-- Retainer inventory threading issues fixed
-- Gathering scrip grinding now detects nodes from visible range instead of surveying spots one by one.
-- Kill Rust solver threads when Drakos is undetected.
-- Combat now double weaves as intended.
-- Gathering scrip grind solver no longer runs on main thread.
+- Crafting rotations no longer get stuck after an error. `CraftingRotationRunner` was leaking `_isRunning = true` when adapter reads or stat capture threw before the try/finally, leaving the runner permanently marked busy.
+- Marketboard undercut sweep no longer crashes on background threads. The gate-population loop now reads `IQuestAdapter.IsQuestComplete` inside a single `RunOnMainAsync` frame instead of touching the QuestManager FFI off-main. (DRAK-164)
+- Marketboard, retainer, and ContextMenu callbacks: restored the verified Int-vs-UInt parameter slot recipes that broke in the FFXIVClientStructs callback migration. ItemSearchResult, ItemSearch, RetainerSellList right-click, and ContextMenu option click were silently no-opping; they now match what the game emits on real player clicks.
+- FC chest hook: dialog errors propagate to the executor trace instead of vanishing behind a generic finalize timeout, and the recovery observer correctly classifies "original item returned to bag" as success instead of ping-ponging another swap. Multi-stack deposits also keep residual tracking so they don't abandon two-thirds of their target. (DRAK-116)
+- `/drakos kill` mid-walk now actually stops the bot. `MoveToAsync` rethrows the cancellation instead of swallowing it, so the offset fallback can no longer retry the exact target after the user already asked us to stop. (DRAK-174)
 
-# v0.1.1
+**Infrastructure**
 
-**New features**
+*Note: these set up the foundation for future work, but not all features have been implemented.*
 
-- Overworld combat farming
-- Chocobo companion usage
-- v1 avoidance of A/S-ranks and boss FATEs during overworld farming
-- Configurable crafter scrip source selection
-- Icebrand: ephemeral solver.
-
-**Improvements**
-
-- Firebrand-fast: <50ms, ~6% average distortion ~23% 95th percentile distortion
-- Firebrand-mid: <500ms, ~2% average distortion ~8% 95th percentile distortion
-- Firebrand-long: 10 seconds, <0.1% average distortion.
-- Icebrand: No longer spends all GP on a single ephemeral node. Instead, it maps out allocates optimal GP across nodes, cordial-aware.
-- Solvers migrated to Rust-FFI for more robustness.
-
-**In progress**
-
-- Cosmic Exploration (work has begun)
-
-**Bug fixes**
-
-- Fix multi-zone gathering double teleport on crystals
-- Fix territory filter for multi-zone gathering items
-- Fix GP allocation for normal gather nodes suppressing crystal fallback
-- Fix ledger clamping causing intermediate overproduction on re-expansion
-- Fix quick synth robustness
-- Robustness on crafting detection due to gearset switch animation lock
-- Added more stabilization delay for RecipeNote closing
-- Fix GUI heartbeat killing idle external GUI connections
-- Rerouted heavy scheduler logic to background threads
-- Fix /drakos kill not immediately killing active solvers
-- Fix stale system.status updates
-- Major refactors
+- Fishing automation: architectural plan and research landed (data layer, rod executor, collectable popup + aethersand routing, OrderExpander integration, multi-fish plan execution). No executor yet. (DRAK-15)
+- Dalamud callback surface migration: centralized the Dalamud SDK version and aligned addon callbacks with current command-versus-parameter AtkValue typing rules.
