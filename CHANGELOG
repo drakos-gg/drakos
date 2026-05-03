@@ -1,2 +1,2 @@
-# v0.2.3
-Miscellaneous fixes.
+# v0.2.4
+Take into account long detours when deciding whether to walk in favor of flying.
