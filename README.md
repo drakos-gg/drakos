@@ -6,4 +6,4 @@ Drakos is a Dalamud plugin for Final Fantasy XIV that treats crafting, gathering
 
 ## Current Status
 
-Drakos is in closed alpha within our team and is not yet publicly available. If you're interested in early access or want to follow progress, check [drakos.gg](https://drakos.gg) or reach out at support@drakos.gg.
+Drakos is in closed alpha within our team and is not yet publicly available, as we're working on making sure that we eliminate as many bugs as we can find before our launch. If you're interested in early access or want to follow progress, check [drakos.gg](https://drakos.gg) or reach out at support@drakos.gg.
