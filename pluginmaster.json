@@ -1,0 +1,23 @@
+[
+  {
+    "Name": "Drakos",
+    "Author": "Drakos Team",
+    "Punchline": "Crafting, gathering, and market automation",
+    "Description": "A plugin to automate crafting, gathering, and market board functions. Drakos allows you to construct orders and automate gathering, crafting, and undercutting on the market board.",
+    "Tags": [
+      "crafting",
+      "gathering",
+      "automation"
+    ],
+    "InternalName": "Drakos",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "RepoUrl": "https://github.com/drakos-gg/drakos",
+    "IconUrl": "https://raw.githubusercontent.com/drakos-gg/drakos/main/icon.png",
+    "TestingAssemblyVersion": "1.0.0.0",
+    "DownloadLinkTesting": "https://github.com/drakos-gg/drakos/releases/download/v1.0.0/Drakos.zip",
+    "AssemblyVersion": "1.0.0.0",
+    "DownloadLinkInstall": "https://github.com/drakos-gg/drakos/releases/download/v1.0.0/Drakos.zip",
+    "DownloadLinkUpdate": "https://github.com/drakos-gg/drakos/releases/download/v1.0.0/Drakos.zip"
+  }
+]

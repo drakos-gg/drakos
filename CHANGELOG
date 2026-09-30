@@ -1,1 +1,68 @@
-# v0.5.9
+# v1.0.0
+
+## Required Environment
+
+- Game patch: FFXIV 7.56, hotfix 2
+- Dalamud: v15.0.3.5 (API 15)
+
+## Changelog
+
+### New Features
+
+- **Materia melding.** Load an etro.gg gearset link in the in-game Melding panel or the desktop app's Melding tab, preview the melds, and Drakos melds them onto your worn gear, overmelds included. (`9d3aa5124`, `13d8c8347`)
+- **Order composer in the desktop app.** Draft grouped orders for several characters, import or export order files, preview each character's plan, and submit. (`e5b070985`, `18c7f7d7f`)
+- **Run controls in the desktop app.** Gently Stop, Stop, Resume Hold and Acknowledge failure for each character. (`e5f87a856`)
+- **Rest after long order runs.** After a set number of hours (18 by default), a long order run goes home to rest and then continues. (`6f671b439`)
+- **Start upkeep only.** Start a maintenance-only run with no order, and queue a new order while a finished run is resting. (`c63d27484`)
+- **Material goals for retainer ventures.** Set items and quantities, and retainers venture for them. The Retainers panel shows results, timers and goals in one ventures section. (`a238305e7`, `2f328ae24`)
+- **Consumables and Stocking settings in the desktop app.** Food, medicine, Stocking lines and crafter scrip sources. (`b4754841f`)
+- **Use my current stats** in the in-game crafting solver fills your stats from the job's gearset. (`34ffb1dd4`)
+- **Enable external API** switch in the System panel turns the desktop app's connection to the game on or off. (`635ae1bd5`)
+
+### Improvements
+
+- **New desktop app.** Drakos.exe is the new app, with a character roster, orders, activity, licensing and editable settings. (`593f5d2c3`, `736387d49`)
+- **Faster market-board buying.** Drakos buys back to back, visits each world once, and a market run buys only what you are short of its restock level. (`ba1bc05e6`)
+- **Expert crafting.** All 51 trained expert-recipe models ship, and they reach the quality cap more often. (`25b3174da`)
+- **Plainer screens.** Both apps show names without internal ids, plain wording for run controls, settings in minutes, and hide features that are not built yet. (`7f9777cf5`, `1874d6687`)
+- **Mob farming** runs on a rebuilt engine, works in a background window, walks into range and out of area attacks, and revives before stopping. Gently Stop finishes any fight still attacking. (`47bce8af8`, `bc87cc9a4`)
+- **Gathering progress** counts each swing as it lands instead of at the end of the node. (`e60df0a7f`)
+- **Gathering food** is eaten only for nodes at or above the food's minimum level. (`c46da77d8`)
+- **Faster collectable rotation solves** that use far less memory. (`78d478971`)
+- **Order files in the desktop app** open and save through the normal Windows dialogs. (`998ee07d7`)
+- **Drakos says when vnavmesh is missing** and refuses to start a run until it answers. (`54cbdb2fc`)
+- **The in-game window** starts fresh for each character you log in. (`8b2e96451`)
+- **Both settings screens warn** when the undercut interval is under 20 minutes. (`5f8b5d964`)
+- **The plugin listing** shows the Drakos logo, a new description and Drakos Team as the author, and links to github.com/drakos-gg/drakos. (`892893314`, `86ddfcdc4`)
+- **Scheduled undercutting skips an empty selling watchlist.** Both settings screens warn that there is nothing to undercut until you add an item. (`c77565d07`)
+- **Switching characters without reloading Drakos.** The in-game window and the desktop app act only on the character now logged in. (`7a09d6847`, `08ca0cd3c`)
+
+### Fixes
+
+- Drakos walks to NPCs inside buildings instead of flying into the walls. (`dfaad625c`)
+- A death while walking or waiting is noticed at once, and Drakos revives the character. (`9e7cb7e5d`)
+- Cosmoliner tube rides in Phaenna no longer break travel. (`f3cb095df`)
+- Gathering works on slow or background clients. (`70ad3fcf7`)
+- Collectable orders stop at the ordered amount instead of using up the whole node. (`39b236331`)
+- Ephemeral gathering travels to the right zone first, and ordinary items at ephemeral nodes, such as Black Soil and Furymint, gather once per spawn window. (`7b8593beb`, `6ab92fef6`)
+- A refused gathering node interaction is noticed at once. (`3ca9b499c`)
+- Aethersand gathering now eats food and uses medicine. (`f6c20cd44`)
+- Crafts starting at 25, 45, 65 or 75 durability work and no longer flood the log with warnings. (`553ed2410`, `c0f53d4e2`)
+- Gil vendor purchases skip shops you cannot use. (`a1295f5fc`, `9d922bf62`)
+- Quest item hand-overs wait for the Request window to be ready. (`559dfa272`)
+- The Retainers panel loads the retainer roster as soon as the game has it. (`aaa3df9c1`)
+- A retainer visit refused during Gently Stop no longer starts a 30-minute cooldown. (`13fd17dfa`)
+- Undercutting reports a failed sweep, and scrip purchases stop sooner on Gently Stop. (`ef5f4fdff`)
+- A Repair window that will not close no longer fails the repair. (`899829af3`)
+- The Selling section no longer cuts off buttons in a narrow window. (`2b5148f60`)
+- The desktop app no longer shows stale values after a short licensing interruption. (`1ad3992c6`)
+
+### Infrastructure
+
+- Version 1.0.0. From now on every release also gets a protected ship build. (`f6581c174`)
+- The licensing servers sign every pass and rotate their keys automatically, and licensed builds check protection per craft and per gathering node. (`78ed5ebd2`, `d666485bb`)
+- Curated data ships inside the plugin instead of as loose files. (`b2f542ab5`)
+
+### In progress
+
+Not available to players yet: Cosmic Exploration missions, tool upgrades and the cosmocredit vendor, Diadem turn-ins, levequest delivery, and quest cutscene choices. (`fa4bf6e83`, `7fa8b4951`)
