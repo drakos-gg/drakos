@@ -25,9 +25,3 @@ Drakos comes with an efficient combat routine that allows it to grind overworld 
 ## Market board
 
 You can also purchase items you need from the market board with Drakos. It hops cross-world, finds the best deals, and is even able to automatically purchase items from the market board for your orders.
-
-## Current Status
-
-Drakos is in closed alpha within our team and is not yet publicly available, as we're working on making sure that we eliminate as many bugs as we can find before our launch. If you're interested in early access or want to follow progress, check [drakos.gg](https://drakos.gg) or reach out at support@drakos.gg. You can also join our Discord at [https://discord.gg/sgKnHh8CRd](https://discord.gg/sgKnHh8CRd).
-
-Note that Drakos is not publicly available, so there is no download link as of now.
