@@ -1,27 +1,41 @@
 # Drakos
 
-Drakos runs crafting, gathering, retainers, and the market board. Just tell it what you want. It solves optimal, condition-dependent rotations, undercuts your competitors automatically, and has an intelligent scheduler that optimizes for the best route to completing your orders.
+Drakos is a Dalamud plugin for Final Fantasy XIV. Add the items you want to an order, and Drakos works out what to craft, gather, and buy, then does the work.
+
+[Website](https://drakos.gg) · [Features](https://drakos.gg/features) · [Installation](https://drakos.gg/installation) · [Pricing](https://drakos.gg/pricing) · [Changelog](https://drakos.gg/updates) · [Discord](https://discord.gg/sgKnHh8CRd)
+
+## Orders
+
+Drakos plans each order from the finished items you add. It counts the materials you already have, decides what to craft, gather, or buy, and schedules the work around timed nodes and travel. It also works out which intermediates need to be HQ to reach your quality target. You can put orders into groups that run in sequence, and import or export order lists.
 
 ## Crafting
 
-Drakos uses a custom solver, based on [raphael](https://github.com/KonaeAkira/raphael-rs), that takes Excellent and Good procs into account. This makes Drakos much more efficient than all publicly available solvers, as it does not rely on a single static, solved rotation, but adjusts based on procs to speed up your craft.
+Drakos solves a rotation for your stats, starting quality, and HQ or collectability target, and adjusts it when the condition turns Good or Excellent. You can preview the rotation before you start. The crafting solver is based on [raphael-rs](https://github.com/KonaeAkira/raphael-rs).
 
-## Gathering
+## Gathering and fishing
 
-Drakos comes with multiple gathering solvers to optimize the amount of material it gathers. It solves for all types of nodes, but more importantly dynamically adjusts the GP budget it allocates to different nodes to maximize your efficiency. It doesn't just solve for the best rotation on a single node, but solves for the best *allocation* of time and GP on nodes.
+Drakos travels to regular, timed, and ephemeral nodes and solves a rotation for item yield or collectability from your stats, current GP, and the node's bonuses. For timed scrip routes and aethersand runs, it chooses which nodes to visit and plans GP and cordial use across the run. It also catches supported rod fish and reduces collectables into aethersands.
 
-## Orchestration
+## Retainers and inventory
 
-Drakos comes with an orchestration solver that solves for the optimal sequence of tasks to maximize your efficiency. You can also supply huge orders of items you want to craft and/or gather, and Drakos automatically figures out what it needs to purchase, gather, and craft, including intermediates, to finish the job. Just tell Drakos what you want and it figures out the rest.
+Drakos reprices your retainer listings using the undercut amount, price floor, and ceiling you set. A selling watchlist sets the items and quantities to sell, and Drakos posts available stock to retainers with free listing slots. It withdraws gil from your retainers after each undercut round. It can also move items you don't need into your saddlebag, retainers, or FC chest, and it retrieves materials from your saddlebag and retainers when an order needs them.
 
-## Retainers
+## Market board and vendors
 
-Drakos comes with hooks, including automatic undercutting hooks, that lets Drakos check all the items you have listed and undercut your competitors while it's working on your order. It also refreshes ventures, and has the ability to retrieve and store items in retainers when it needs space to craft items.
+Drakos buys materials from market board listings, starting with the lowest prices. You can turn on world hopping and choose which worlds in your data center to shop on. It also buys order materials from NPC vendors and scrip exchanges, and turns in crafted or gathered collectables for scrips.
 
 ## Combat
 
-Drakos comes with an efficient combat routine that allows it to grind overworld mobs to fulfill orders. You don't need to separately purchase mob materials!
+Drakos farms materials from supported mobs for your orders.
 
-## Market board
+## Chores during a run
 
-You can also purchase items you need from the market board with Drakos. It hops cross-world, finds the best deals, and is even able to automatically purchase items from the market board for your orders.
+Optional hooks repair your gear, keep your food, medicine, and FC buffs active, use EXP manuals, and extract materia from fully spiritbonded gear. A restocking list for each character tops up supplies such as food and medicine before every order.
+
+## Getting started
+
+The [installation guide](https://drakos.gg/installation) lists the requirements and walks through setup. Your license key is on your [account page](https://drakos.gg/accounts), and the [pricing page](https://drakos.gg/pricing) lists the current plans.
+
+## Support
+
+Ask questions and report bugs on [Discord](https://discord.gg/sgKnHh8CRd). For account and purchase help, email [support@drakos.gg](mailto:support@drakos.gg). Check [status.drakos.gg](https://status.drakos.gg) for service status.
