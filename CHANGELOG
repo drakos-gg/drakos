@@ -1,4 +1,4 @@
-# v1.0.1
+# v1.0.2
 
 ## Required Environment
 
@@ -7,43 +7,18 @@
 
 ## Changelog
 
-### New Features
-
-- **Market board tax.** Market buying counts the 5% buyer's tax in every price and gil total, and a new Market panel toggle lets you enter max prices with tax included. (`65e57bdab`)
-- **Settings check before submitting.** The desktop app refuses a previewed order after you change a setting it uses, lists what changed, and offers Preview again. (`08eb4fe59`, `fa6d09c6d`)
-- **Mount and home position pickers.** The desktop app lets you pick your preferred mount from your unlocked mounts and fill in the home position from where you stand. (`80b6331cb`)
-
 ### Improvements
 
-- **Order runs end when the orders are done** instead of continuing upkeep, and a new order starts right away. (`303160cd8`, `410e9777e`)
-- **Faster retainer undercutting**, and quicker button presses everywhere. (`db486f6b0`)
-- **New chat commands.** `/drakos license on` and `/drakos license off` replace `/drakos on` and `/drakos off` and reply in chat, and `/xlhelp` lists the player commands. (`acd8c914e`)
-- **Drakos refuses to start** while a teleport, Quest Purger run or character move is under way, and says what is running. (`d94a9d359`)
-- **etro gearset links** load the same way in the in-game Melding panel and the desktop app, with a clear reason when loading fails. The in-game panel now needs a license for this. (`b44b24ad3`)
-- **Gently Stop at an innkeeper** finishes entering the inn room. (`b7066d3f7`)
-- **Clearer wording** across both apps, including corrected help text for scheduled hooks. (`09854cf44`, `dd7b1e6bb`)
+- **One run at a time.** Each character runs one thing at a time. Every Start button greys out while something else is running, and Stop and Gently Stop in the game and the desktop app always reach the run that is going. A run the desktop app started stops gently if the app disconnects. (`524145f4b`)
+- **Timed nodes.** Once the scrip grind or a timed gather order picks a timed node, the character flies there and waits for it instead of breaking off for other work. (`6ae09406e`)
 
 ### Fixes
 
-- Drakos closes a Synthesis window the game leaves on screen after a craft and carries on with the order instead of stopping. (`ce05fa9ec`)
-- After a craft, Drakos closes the crafting log and waits for the character to stand before eating, repairing, extracting materia, retrieving items or walking away, and it no longer leaves the crafting log open when a run rests, holds or finishes. (`4ba81d1a2`, `327c5977e`)
-- The expert crafting solver no longer finishes some expert crafts at zero quality. (`cc40c08aa`)
-- Combat jobs play their combos in order instead of repeating one step. (`f31c2ed66`, `1e6586cad`)
-- Drakos no longer tries to aetherially reduce items that are not collectables. (`1e3003730`)
-- Walks that catch on an edge jump over it instead of stalling. (`794783b71`)
-- Aethernet trips no longer fail when the destination list loads slowly. (`bcd9bb5e8`)
-- Trips to another world retry cleanly when the game shows no travel confirmation, instead of failing with the world list open. (`d0a939980`)
-- Drakos no longer leaves the retainer goodbye dialogue open at the summoning bell. (`0c060b2b8`)
-- Drakos no longer wrongly reports that the game disabled a venture. (`69b2f4c03`)
-- The Orders panel refreshes its saved runs as soon as a run ends. (`bda7d8825`)
-- A run that fails while starting shows as failed with its error instead of looking like it is running. (`840024c4a`)
-- The desktop app connects to a character on the first try after Drakos loads, instead of failing once and reconnecting. (`71ea63fb9`)
-
-### Infrastructure
-
-- **Use the desktop app from this release.** The plugin and the desktop app use a new connection that keeps commands for one character from reaching the next character to log in, so both must come from the same release. (`96ddffb1c`, `ad5cf49e9`)
-- **Beta access through Discord.** Link a Discord account on drakos.gg/accounts to get free beta access. Every beta key ends on November 2, 2026. (`5b0444237`)
+- After a relog or a switch to another character, Drakos no longer shows the previous character's runs, logs, inventory or license status. (`e788430cb`)
+- Collectable gathering no longer has strikes refused by the game and no longer pauses between strikes. (`d8d8df462`)
+- The Selling header keeps the last sweep's results until the next sweep starts instead of dropping to zero. (`59477ba5f`)
+- The Add to watchlist dialog no longer bounces, and its list of ticked items shows up to seven before it scrolls. (`26fef8178`, `b299eedfe`)
 
 ### In progress
 
-- Cosmic Exploration runs, Diadem gathering, the Ishgard Restoration loop, levequest delivery and quest runs are being built and cannot be started from the in-game window or the desktop app yet.
+- Diadem gathering, including boarding wind pads from the side where the ride lands, is still being built and cannot be started yet. (`2880d9813`)
