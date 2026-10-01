@@ -1,4 +1,4 @@
-# v1.0.0
+# v1.0.1
 
 ## Required Environment
 
@@ -9,60 +9,41 @@
 
 ### New Features
 
-- **Materia melding.** Load an etro.gg gearset link in the in-game Melding panel or the desktop app's Melding tab, preview the melds, and Drakos melds them onto your worn gear, overmelds included. (`9d3aa5124`, `13d8c8347`)
-- **Order composer in the desktop app.** Draft grouped orders for several characters, import or export order files, preview each character's plan, and submit. (`e5b070985`, `18c7f7d7f`)
-- **Run controls in the desktop app.** Gently Stop, Stop, Resume Hold and Acknowledge failure for each character. (`e5f87a856`)
-- **Rest after long order runs.** After a set number of hours (18 by default), a long order run goes home to rest and then continues. (`6f671b439`)
-- **Start upkeep only.** Start a maintenance-only run with no order, and queue a new order while a finished run is resting. (`c63d27484`)
-- **Material goals for retainer ventures.** Set items and quantities, and retainers venture for them. The Retainers panel shows results, timers and goals in one ventures section. (`a238305e7`, `2f328ae24`)
-- **Consumables and Stocking settings in the desktop app.** Food, medicine, Stocking lines and crafter scrip sources. (`b4754841f`)
-- **Use my current stats** in the in-game crafting solver fills your stats from the job's gearset. (`34ffb1dd4`)
-- **Enable external API** switch in the System panel turns the desktop app's connection to the game on or off. (`635ae1bd5`)
+- **Market board tax.** Market buying counts the 5% buyer's tax in every price and gil total, and a new Market panel toggle lets you enter max prices with tax included. (`65e57bdab`)
+- **Settings check before submitting.** The desktop app refuses a previewed order after you change a setting it uses, lists what changed, and offers Preview again. (`08eb4fe59`, `fa6d09c6d`)
+- **Mount and home position pickers.** The desktop app lets you pick your preferred mount from your unlocked mounts and fill in the home position from where you stand. (`80b6331cb`)
 
 ### Improvements
 
-- **New desktop app.** Drakos.exe is the new app, with a character roster, orders, activity, licensing and editable settings. (`593f5d2c3`, `736387d49`)
-- **Faster market-board buying.** Drakos buys back to back, visits each world once, and a market run buys only what you are short of its restock level. (`ba1bc05e6`)
-- **Expert crafting.** All 51 trained expert-recipe models ship, and they reach the quality cap more often. (`25b3174da`)
-- **Plainer screens.** Both apps show names without internal ids, plain wording for run controls, settings in minutes, and hide features that are not built yet. (`7f9777cf5`, `1874d6687`)
-- **Mob farming** runs on a rebuilt engine, works in a background window, walks into range and out of area attacks, and revives before stopping. Gently Stop finishes any fight still attacking. (`47bce8af8`, `bc87cc9a4`)
-- **Gathering progress** counts each swing as it lands instead of at the end of the node. (`e60df0a7f`)
-- **Gathering food** is eaten only for nodes at or above the food's minimum level. (`c46da77d8`)
-- **Faster collectable rotation solves** that use far less memory. (`78d478971`)
-- **Order files in the desktop app** open and save through the normal Windows dialogs. (`998ee07d7`)
-- **Drakos says when vnavmesh is missing** and refuses to start a run until it answers. (`54cbdb2fc`)
-- **The in-game window** starts fresh for each character you log in. (`8b2e96451`)
-- **Both settings screens warn** when the undercut interval is under 20 minutes. (`5f8b5d964`)
-- **The plugin listing** shows the Drakos logo, a new description and Drakos Team as the author, and links to github.com/drakos-gg/drakos. (`892893314`, `86ddfcdc4`)
-- **Scheduled undercutting skips an empty selling watchlist.** Both settings screens warn that there is nothing to undercut until you add an item. (`c77565d07`)
-- **Switching characters without reloading Drakos.** The in-game window and the desktop app act only on the character now logged in. (`7a09d6847`, `08ca0cd3c`)
+- **Order runs end when the orders are done** instead of continuing upkeep, and a new order starts right away. (`303160cd8`, `410e9777e`)
+- **Faster retainer undercutting**, and quicker button presses everywhere. (`db486f6b0`)
+- **New chat commands.** `/drakos license on` and `/drakos license off` replace `/drakos on` and `/drakos off` and reply in chat, and `/xlhelp` lists the player commands. (`acd8c914e`)
+- **Drakos refuses to start** while a teleport, Quest Purger run or character move is under way, and says what is running. (`d94a9d359`)
+- **etro gearset links** load the same way in the in-game Melding panel and the desktop app, with a clear reason when loading fails. The in-game panel now needs a license for this. (`b44b24ad3`)
+- **Gently Stop at an innkeeper** finishes entering the inn room. (`b7066d3f7`)
+- **Clearer wording** across both apps, including corrected help text for scheduled hooks. (`09854cf44`, `dd7b1e6bb`)
 
 ### Fixes
 
-- Drakos walks to NPCs inside buildings instead of flying into the walls. (`dfaad625c`)
-- A death while walking or waiting is noticed at once, and Drakos revives the character. (`9e7cb7e5d`)
-- Cosmoliner tube rides in Phaenna no longer break travel. (`f3cb095df`)
-- Gathering works on slow or background clients. (`70ad3fcf7`)
-- Collectable orders stop at the ordered amount instead of using up the whole node. (`39b236331`)
-- Ephemeral gathering travels to the right zone first, and ordinary items at ephemeral nodes, such as Black Soil and Furymint, gather once per spawn window. (`7b8593beb`, `6ab92fef6`)
-- A refused gathering node interaction is noticed at once. (`3ca9b499c`)
-- Aethersand gathering now eats food and uses medicine. (`f6c20cd44`)
-- Crafts starting at 25, 45, 65 or 75 durability work and no longer flood the log with warnings. (`553ed2410`, `c0f53d4e2`)
-- Gil vendor purchases skip shops you cannot use. (`a1295f5fc`, `9d922bf62`)
-- Quest item hand-overs wait for the Request window to be ready. (`559dfa272`)
-- The Retainers panel loads the retainer roster as soon as the game has it. (`aaa3df9c1`)
-- A retainer visit refused during Gently Stop no longer starts a 30-minute cooldown. (`13fd17dfa`)
-- Undercutting reports a failed sweep, and scrip purchases stop sooner on Gently Stop. (`ef5f4fdff`)
-- A Repair window that will not close no longer fails the repair. (`899829af3`)
-- The Selling section no longer cuts off buttons in a narrow window. (`2b5148f60`)
-- The desktop app no longer shows stale values after a short licensing interruption. (`1ad3992c6`)
+- Drakos closes a Synthesis window the game leaves on screen after a craft and carries on with the order instead of stopping. (`ce05fa9ec`)
+- After a craft, Drakos closes the crafting log and waits for the character to stand before eating, repairing, extracting materia, retrieving items or walking away, and it no longer leaves the crafting log open when a run rests, holds or finishes. (`4ba81d1a2`, `327c5977e`)
+- The expert crafting solver no longer finishes some expert crafts at zero quality. (`cc40c08aa`)
+- Combat jobs play their combos in order instead of repeating one step. (`f31c2ed66`, `1e6586cad`)
+- Drakos no longer tries to aetherially reduce items that are not collectables. (`1e3003730`)
+- Walks that catch on an edge jump over it instead of stalling. (`794783b71`)
+- Aethernet trips no longer fail when the destination list loads slowly. (`bcd9bb5e8`)
+- Trips to another world retry cleanly when the game shows no travel confirmation, instead of failing with the world list open. (`d0a939980`)
+- Drakos no longer leaves the retainer goodbye dialogue open at the summoning bell. (`0c060b2b8`)
+- Drakos no longer wrongly reports that the game disabled a venture. (`69b2f4c03`)
+- The Orders panel refreshes its saved runs as soon as a run ends. (`bda7d8825`)
+- A run that fails while starting shows as failed with its error instead of looking like it is running. (`840024c4a`)
+- The desktop app connects to a character on the first try after Drakos loads, instead of failing once and reconnecting. (`71ea63fb9`)
 
 ### Infrastructure
 
-- Version 1.0.0. From now on every release also gets a protected ship build. (`f6581c174`)
-- The licensing servers sign every pass and rotate their keys automatically, and licensed builds check protection per craft and per gathering node. (`78ed5ebd2`, `d666485bb`)
-- Curated data ships inside the plugin instead of as loose files. (`b2f542ab5`)
+- **Use the desktop app from this release.** The plugin and the desktop app use a new connection that keeps commands for one character from reaching the next character to log in, so both must come from the same release. (`96ddffb1c`, `ad5cf49e9`)
+- **Beta access through Discord.** Link a Discord account on drakos.gg/accounts to get free beta access. Every beta key ends on November 2, 2026. (`5b0444237`)
 
 ### In progress
 
-Not available to players yet: Cosmic Exploration missions, tool upgrades and the cosmocredit vendor, Diadem turn-ins, levequest delivery, and quest cutscene choices. (`fa4bf6e83`, `7fa8b4951`)
+- Cosmic Exploration runs, Diadem gathering, the Ishgard Restoration loop, levequest delivery and quest runs are being built and cannot be started from the in-game window or the desktop app yet.
