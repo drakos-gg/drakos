@@ -16,8 +16,8 @@
     "IconUrl": "https://raw.githubusercontent.com/drakos-gg/drakos/main/icon.png",
     "TestingAssemblyVersion": "1.0.0.0",
     "DownloadLinkTesting": "https://github.com/drakos-gg/drakos/releases/download/v1.0.0/Drakos.zip",
-    "AssemblyVersion": "1.0.2.0",
-    "DownloadLinkInstall": "https://github.com/drakos-gg/drakos/releases/download/v1.0.2/Drakos.zip",
-    "DownloadLinkUpdate": "https://github.com/drakos-gg/drakos/releases/download/v1.0.2/Drakos.zip"
+    "AssemblyVersion": "1.0.3.0",
+    "DownloadLinkInstall": "https://github.com/drakos-gg/drakos/releases/download/v1.0.3/Drakos.zip",
+    "DownloadLinkUpdate": "https://github.com/drakos-gg/drakos/releases/download/v1.0.3/Drakos.zip"
   }
 ]

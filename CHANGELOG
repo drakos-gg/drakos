@@ -1,4 +1,4 @@
-# v1.0.2
+# v1.0.3
 
 ## Required Environment
 
@@ -7,18 +7,33 @@
 
 ## Changelog
 
+### New Features
+
+- **Resume after a stop.** After you stop a run, the Orders panel offers Resume to continue it while the order is unchanged, and Start over to begin fresh. (`50581e01a`, `03cad58a3`)
+- **Alert sign.** A clickable sign appears over your character when a run fails or goes on hold, and clicking it dismisses the alert. (`9adf47051`)
+- **Hold reasons in the desktop app.** The app lists why a run is on hold, one line per problem, and marks a run that never started as Did not start. (`a17bcc0c4`)
+- **Retainers settings in the desktop app.** You choose which retainers store items and in what order, and the Stocking settings point out problems in your lines. (`64c73e5f9`)
+- **Expert model count.** General settings in the plugin and the app show how many expert crafting models are installed and name any that are missing. (`5c2fe6407`)
+- **Leve orders (beta).** You can add a delivery leve to an order in the in-game Orders panel by typing its ID, and the run turns the leve in once its items are ready. (`f312bd585`)
+- Drakos can complete the quest A Home in the Firmament on its own. (`0a9711f50`)
+
 ### Improvements
 
-- **One run at a time.** Each character runs one thing at a time. Every Start button greys out while something else is running, and Stop and Gently Stop in the game and the desktop app always reach the run that is going. A run the desktop app started stops gently if the app disconnects. (`524145f4b`)
-- **Timed nodes.** Once the scrip grind or a timed gather order picks a timed node, the character flies there and waits for it instead of breaking off for other work. (`6ae09406e`)
+- Once a run starts a task, it finishes that task before switching to another one. (`0451e70f7`)
+- A new market-board purchase line gets a 100-gil cap per unit unless you type 0 for no limit, and a new selling watchlist item starts with a 100,000-gil price floor. (`83b7ca7ad`, `1c672e3b0`)
+- Ephemeral node gathering plans its visits from the real travel time between that zone's nodes, so the plan matches what actually gets gathered. (`cf49f29aa`, `202885fdd`)
+- The desktop app tells you to check the external connection in game when it finds no characters. (`d9822e242`)
 
 ### Fixes
 
-- After a relog or a switch to another character, Drakos no longer shows the previous character's runs, logs, inventory or license status. (`e788430cb`)
-- Collectable gathering no longer has strikes refused by the game and no longer pauses between strikes. (`d8d8df462`)
-- The Selling header keeps the last sweep's results until the next sweep starts instead of dropping to zero. (`59477ba5f`)
-- The Add to watchlist dialog no longer bounces, and its list of ticked items shows up to seven before it scrolls. (`26fef8178`, `b299eedfe`)
+- A full bag at the scrip cap now puts the run on hold once and names the full bag, instead of leaving the run waiting or replanning for hours. (`4973fb1d3`)
+- Talking to an NPC right after dismounting no longer fails because the game thinks you are jumping. (`00198364d`)
+- Price changes at a retainer no longer fail after a Compare Prices result that never arrived. (`b8c306b9e`)
+- A Gently Stop during a quest step or a long cutscene now stops promptly and leaves the dialogue or scene to you. (`38593b671`, `933fd49ad`)
+- Quest turn-ins no longer stall when a cutscene's last choice stays on screen after the scene ends. (`77069f977`)
+- Licensed Drakos now signs in on Linux under Wine. (`be98d9361`)
+- Signing in again right after a refused license no longer waits 30 seconds for the seat to free up. (`79e5b0e53`)
 
 ### In progress
 
-- Diadem gathering, including boarding wind pads from the side where the ride lands, is still being built and cannot be started yet. (`2880d9813`)
+- Diadem gathering, Cosmic Exploration runs, Ishgard Restoration runs and founder pricing at checkout are still being built. (`e5b0db383`, `ee8ed0eb4`)
