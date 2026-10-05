@@ -1,4 +1,4 @@
-# v1.0.3
+# v1.0.4
 
 ## Required Environment
 
@@ -9,31 +9,46 @@
 
 ### New Features
 
-- **Resume after a stop.** After you stop a run, the Orders panel offers Resume to continue it while the order is unchanged, and Start over to begin fresh. (`50581e01a`, `03cad58a3`)
-- **Alert sign.** A clickable sign appears over your character when a run fails or goes on hold, and clicking it dismisses the alert. (`9adf47051`)
-- **Hold reasons in the desktop app.** The app lists why a run is on hold, one line per problem, and marks a run that never started as Did not start. (`a17bcc0c4`)
-- **Retainers settings in the desktop app.** You choose which retainers store items and in what order, and the Stocking settings point out problems in your lines. (`64c73e5f9`)
-- **Expert model count.** General settings in the plugin and the app show how many expert crafting models are installed and name any that are missing. (`5c2fe6407`)
-- **Leve orders (beta).** You can add a delivery leve to an order in the in-game Orders panel by typing its ID, and the run turns the leve in once its items are ready. (`f312bd585`)
-- Drakos can complete the quest A Home in the Firmament on its own. (`0a9711f50`)
+- **Diadem orders.** Orders can now include Diadem materials, Skybuilders' approved materials and Grade 4 Skybuilders' crafts. Drakos gathers in the Diadem as Miner or Botanist and has Flotpassant inspect the materials in the Firmament. (`6caed6bc4`, `04e4ac731`)
+- **Gemstone Trader materials.** Turn on the new setting Farm FATEs for bicolor gemstones, and Drakos farms Shaaloani FATEs on your combat job for bicolor gemstones and buys order materials from the Gemstone Trader. The setting is off by default. (`31e3065f9`, `c4c83de4b`)
+- **Inventory tab in the desktop app.** Each character's tab shows the same bags, saddlebag and retainers as the in-game Stash panel, how full each one is and when it was last seen. (`b6ff55101`)
+- **Saved runs in the desktop app.** The Orders tab lists your saved runs, and you can resume or delete each one. (`7919f2bba`)
 
 ### Improvements
 
-- Once a run starts a task, it finishes that task before switching to another one. (`0451e70f7`)
-- A new market-board purchase line gets a 100-gil cap per unit unless you type 0 for no limit, and a new selling watchlist item starts with a 100,000-gil price floor. (`83b7ca7ad`, `1c672e3b0`)
-- Ephemeral node gathering plans its visits from the real travel time between that zone's nodes, so the plan matches what actually gets gathered. (`cf49f29aa`, `202885fdd`)
-- The desktop app tells you to check the external connection in game when it finds no characters. (`d9822e242`)
+- **Storage is now opt-in.** Drakos no longer puts items into or takes materials out of the saddlebag, retainers or the company chest unless you turn that on. This update turns Saddlebag storage, Retainer storage, Company chest storage and both Use stored materials options off once, so turn on again the ones you want. (`c864545ba`)
+- Drakos shows names instead of ID numbers for items, leves, quests, retainers and zones. You now pick a leve in the Orders panel and your home crafting zone by name. (`431caf2a0`, `9f8047b00`)
+- Quick Synthesis counts each item as it is made, Stop and Gently Stop quit the batch cleanly, and a resumed order crafts only what is left. (`46560ea99`, `49d14f467`)
+- Getting off a flying mount is much faster. (`2d28a1b90`)
+- Drakos buys everything one vendor sells for your order in a single visit. (`8bf3006b7`)
+- Drakos dodges enemy area attacks better, including cone attacks. (`952d61f1b`, `470efb9c0`)
+- Drakos picks the mender, appraiser, scrip exchange, summoning bell or company chest that costs the least to teleport to. (`a44d1a485`)
+- Timed aethersand gathering plans only the node visits that fit the window and spends GP better. (`dc9948f5f`)
+- Drakos skips a scrip purchase whose exchange it cannot reach, and the order goes on. (`739fecd7d`)
+- Several game menus Drakos uses now read their option text from the game, a step toward clients in other languages. (`4dd1528f8`)
 
 ### Fixes
 
-- A full bag at the scrip cap now puts the run on hold once and names the full bag, instead of leaving the run waiting or replanning for hours. (`4973fb1d3`)
-- Talking to an NPC right after dismounting no longer fails because the game thinks you are jumping. (`00198364d`)
-- Price changes at a retainer no longer fail after a Compare Prices result that never arrived. (`b8c306b9e`)
-- A Gently Stop during a quest step or a long cutscene now stops promptly and leaves the dialogue or scene to you. (`38593b671`, `933fd49ad`)
-- Quest turn-ins no longer stall when a cutscene's last choice stays on screen after the scene ends. (`77069f977`)
-- Licensed Drakos now signs in on Linux under Wine. (`be98d9361`)
-- Signing in again right after a refused license no longer waits 30 seconds for the seat to free up. (`79e5b0e53`)
+- Grouped orders keep the materials later groups need instead of stashing them and making them again. (`234fcbd05`)
+- With both repair options off, Drakos stops crafting when gear breaks, and the order waits until you repair and press Resume. (`49d14f467`)
+- Market board buying ends an item cleanly when nobody lists it or its last listing sells out. (`bfec857f3`, `ae596e20c`)
+- The market board no longer shows the previous item's name over the next item's listings. (`ba7fddc8a`)
+- A market run with nothing to buy now says so on the Market panel, and purchases count for the world they were made on. (`f2d9d6714`)
+- World visits no longer misfire and retry while the world list is still loading. (`4911ca265`)
+- A cordial used right after a gathering node runs out no longer fails. (`70ab9aacd`)
+- Collectable gathering no longer pauses before Collect. (`85324838a`)
+- Taking gear from a retainer works when the game puts new gear in the Armoury Chest. (`1d2f99899`)
+- Scrip exchange purchases no longer stall when the exchange window opens slowly or right after a zone change. (`7ba3f0751`, `8c34f567c`)
+- Drakos can gather, mount and dismount while you have a field gathering leve active. (`aa19325cf`)
+- Starting a run closes a turn-in or inspection window that an earlier stop left open, instead of failing at once. (`813bebf62`)
+- The alert sign over your character no longer shakes, and it stays in place after you hide and show the game UI. (`62098202a`, `e90bd6d9d`)
+- The desktop app now handles an order check that finds nothing and an item with no recipe. (`2809b5a54`)
+
+### Infrastructure
+
+- The license screen keeps showing why a sign-in failed and what to do, instead of switching to Lost contact. (`f881d9fab`, `7334bc869`)
+- Drakos is less likely to lose its license seat when a reconnect drops halfway. (`f0cd38f7a`)
 
 ### In progress
 
-- Diadem gathering, Cosmic Exploration runs, Ishgard Restoration runs and founder pricing at checkout are still being built. (`e5b0db383`, `ee8ed0eb4`)
+- Cosmic Exploration runs, Ishgard Restoration runs, quest automation, field gathering leves, a leveling mode and listing new items from the saddlebag are still being built. The Selling panel already shows the saddlebag listing option, but it does nothing yet. (`8ff94ec0a`, `036f7eab3`)
