@@ -1,54 +1,43 @@
-# v1.0.4
+# v1.0.5
 
 ## Required Environment
 
-- Game patch: FFXIV 7.56, hotfix 2
-- Dalamud: v15.0.3.5 (API 15)
+- Game patch: FFXIV 7.57
+- Dalamud: v15.0.3.7 (API 15)
 
 ## Changelog
 
 ### New Features
 
-- **Diadem orders.** Orders can now include Diadem materials, Skybuilders' approved materials and Grade 4 Skybuilders' crafts. Drakos gathers in the Diadem as Miner or Botanist and has Flotpassant inspect the materials in the Firmament. (`6caed6bc4`, `04e4ac731`)
-- **Gemstone Trader materials.** Turn on the new setting Farm FATEs for bicolor gemstones, and Drakos farms Shaaloani FATEs on your combat job for bicolor gemstones and buys order materials from the Gemstone Trader. The setting is off by default. (`31e3065f9`, `c4c83de4b`)
-- **Inventory tab in the desktop app.** Each character's tab shows the same bags, saddlebag and retainers as the in-game Stash panel, how full each one is and when it was last seen. (`b6ff55101`)
-- **Saved runs in the desktop app.** The Orders tab lists your saved runs, and you can resume or delete each one. (`7919f2bba`)
+- **Chat commands.** `/drakos market start`, `/drakos orders start`, `/drakos orders resume`, `/drakos craft <item>` and `/drakos gather <item>` start runs from chat or a macro, and Drakos answers each one in chat. A command Drakos does not know prints the full list. (`4f7fbef05`, `79375c78d`)
+- **Unlock every crafter and gatherer.** `/drakos unlockall` does each crafting and gathering class's guild quests and first class quest, and saves a gearset for it. (`b41a3b7ea`, `de4799235`)
+- **Retainers tab in the desktop app.** See each retainer's gil, listings and venture timers, withdraw all gil, set venture material goals, edit the market watchlist and run an undercut sweep. (`fb37f5659`, `c2d9b700d`)
 
 ### Improvements
 
-- **Storage is now opt-in.** Drakos no longer puts items into or takes materials out of the saddlebag, retainers or the company chest unless you turn that on. This update turns Saddlebag storage, Retainer storage, Company chest storage and both Use stored materials options off once, so turn on again the ones you want. (`c864545ba`)
-- Drakos shows names instead of ID numbers for items, leves, quests, retainers and zones. You now pick a leve in the Orders panel and your home crafting zone by name. (`431caf2a0`, `9f8047b00`)
-- Quick Synthesis counts each item as it is made, Stop and Gently Stop quit the batch cleanly, and a resumed order crafts only what is left. (`46560ea99`, `49d14f467`)
-- Getting off a flying mount is much faster. (`2d28a1b90`)
-- Drakos buys everything one vendor sells for your order in a single visit. (`8bf3006b7`)
-- Drakos dodges enemy area attacks better, including cone attacks. (`952d61f1b`, `470efb9c0`)
-- Drakos picks the mender, appraiser, scrip exchange, summoning bell or company chest that costs the least to teleport to. (`a44d1a485`)
-- Timed aethersand gathering plans only the node visits that fit the window and spends GP better. (`dc9948f5f`)
-- Drakos skips a scrip purchase whose exchange it cannot reach, and the order goes on. (`739fecd7d`)
-- Several game menus Drakos uses now read their option text from the game, a step toward clients in other languages. (`4dd1528f8`)
+- When Drakos hands items to an NPC for leves, Potkin or Splendors exchanges, it never gives away a copy one of your gearsets uses or one with materia melded, and it can hand over copies from the Armoury Chest. (`eae4ab529`, `c152d3f27`)
+- You can click the resting sign over your character to hide it. (`428f54b40`)
+- The Saddlebag storage setting is greyed out until you finish My Feisty Little Chocobo. (`826647c9c`)
 
 ### Fixes
 
-- Grouped orders keep the materials later groups need instead of stashing them and making them again. (`234fcbd05`)
-- With both repair options off, Drakos stops crafting when gear breaks, and the order waits until you repair and press Resume. (`49d14f467`)
-- Market board buying ends an item cleanly when nobody lists it or its last listing sells out. (`bfec857f3`, `ae596e20c`)
-- The market board no longer shows the previous item's name over the next item's listings. (`ba7fddc8a`)
-- A market run with nothing to buy now says so on the Market panel, and purchases count for the world they were made on. (`f2d9d6714`)
-- World visits no longer misfire and retry while the world list is still loading. (`4911ca265`)
-- A cordial used right after a gathering node runs out no longer fails. (`70ab9aacd`)
-- Collectable gathering no longer pauses before Collect. (`85324838a`)
-- Taking gear from a retainer works when the game puts new gear in the Armoury Chest. (`1d2f99899`)
-- Scrip exchange purchases no longer stall when the exchange window opens slowly or right after a zone change. (`7ba3f0751`, `8c34f567c`)
-- Drakos can gather, mount and dismount while you have a field gathering leve active. (`aa19325cf`)
-- Starting a run closes a turn-in or inspection window that an earlier stop left open, instead of failing at once. (`813bebf62`)
-- The alert sign over your character no longer shakes, and it stays in place after you hide and show the game UI. (`62098202a`, `e90bd6d9d`)
-- The desktop app now handles an order check that finds nothing and an item with no recipe. (`2809b5a54`)
+- Inventory space settings now do what the Settings window says. With automatic clearing off, Drakos clears no space, each storage method runs only when ticked, and a failed clearing is retried after a minute instead of half an hour. (`97a22a543`, `88294b4ea`)
+- FATE farming fights back against monsters that attack between FATEs, and finds a landing spot when a flight into a FATE ends in mid-air instead of stopping the farm. (`d928281da`, `b01e27cff`)
+- Miner and Botanist orders turn on Prospect or Triangulate when it is off, so they find their nodes. (`86c8b5854`)
+- An order for an item found only at rocky outcrops or lush vegetation now stops with a message when the Miner or Botanist has no off-hand tool, instead of trying the node again and again. (`4d866efcb`)
+- Leve orders get past a levemete's first-visit explanation pages, and stop instead of pressing anything when the leve menu is gone. (`e2bd1935e`, `aa2ff3d59`)
+- Starting a run while a synthesis is still in progress now asks you to finish or quit it instead of pressing anything. (`67fd719e1`)
+- Eating a meal while another meal is still active no longer counts as a failure. (`4cc552ea9`)
+- Buying gear and other items that do not stack from a vendor no longer gets stuck. (`7aba390c8`)
+- A low-level crafter asked for quality now reaches the quality it can instead of failing. (`6325aa526`)
+- Aethernet trips retry when the game drops the interaction. (`97a22a543`)
+- Retainer sweep log lines name the item instead of showing its ID number. (`97ac40258`)
+- The desktop app no longer misses quick step changes in its gathering, world visit and crafting readouts, and the order composer's title no longer gets cut off. (`171c6f456`, `e8b1855a4`)
 
 ### Infrastructure
 
-- The license screen keeps showing why a sign-in failed and what to do, instead of switching to Lost contact. (`f881d9fab`, `7334bc869`)
-- Drakos is less likely to lose its license seat when a reconnect drops halfway. (`f0cd38f7a`)
+- Drakos runs on patch 7.57 and Dalamud 15.0.3.7. (`df0d46b22`)
 
 ### In progress
 
-- Cosmic Exploration runs, Ishgard Restoration runs, quest automation, field gathering leves, a leveling mode and listing new items from the saddlebag are still being built. The Selling panel already shows the saddlebag listing option, but it does nothing yet. (`8ff94ec0a`, `036f7eab3`)
+- Cosmic Exploration runs, Ishgard Restoration runs, Leveling to level 5 and Custom Deliveries now have their own tabs, marked work in progress. Custom Deliveries hand-ins have not been tested in the game yet. Grand Company supply deliveries, field gathering leves, gear leves, leveling past level 5 and listing new items from the saddlebag are still being built, and the Selling panel's saddlebag listing option still does nothing. (`a616e73a9`, `caedbcd65`)

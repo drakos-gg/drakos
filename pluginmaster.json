@@ -3,7 +3,7 @@
     "Name": "Drakos",
     "Author": "Drakos Team",
     "Punchline": "Crafting, gathering, and market automation",
-    "Description": "A plugin to automate crafting, gathering, and market board functions. Drakos allows you to construct orders and automate gathering, crafting, and undercutting on the market board.\n\n/drakos opens the Drakos window.\n/drakos kill stops everything Drakos is doing at once. Reload the plugin to use Drakos again.\n/drakos license on signs this character in to Drakos licensing.\n/drakos license off gently stops running automation, then signs this character out of Drakos licensing.",
+    "Description": "A plugin to automate crafting, gathering, and market board functions. Drakos allows you to construct orders and automate gathering, crafting, and undercutting on the market board.\n\n/drakos opens the Drakos window.\n/drakos kill stops everything Drakos is doing at once. Reload the plugin to use Drakos again.\n/drakos license on signs this character in to Drakos licensing.\n/drakos license off gently stops running automation, then signs this character out of Drakos licensing.\n/drakos unlockall unlocks every crafting and gathering class, with its starter quests and a gearset.\n/drakos unlockall resume continues unlock all after it waited for you.\n/drakos market opens the Market tab.\n/drakos market start [--worldhop] [--file \"C:/path/list.json\"] buys your saved buy list, or the exported list in the file, hopping worlds when asked.\n/drakos orders opens the Orders tab.\n/drakos orders start [--file \"C:/path/order.json\"] starts or continues the order drafted in the Orders tab, after loading the file into it when one is named.\n/drakos orders resume continues the order waiting for you, or your newest saved order.\n/drakos craft <name> [x<count>], <name> ... crafts the first match of each name.\n/drakos gather <name> [x<count>], <name> ... gathers or fishes the first match of each name.",
     "Tags": [
       "crafting",
       "gathering",
@@ -16,8 +16,8 @@
     "IconUrl": "https://raw.githubusercontent.com/drakos-gg/drakos/main/icon.png",
     "TestingAssemblyVersion": "1.0.0.0",
     "DownloadLinkTesting": "https://github.com/drakos-gg/drakos/releases/download/v1.0.0/Drakos.zip",
-    "AssemblyVersion": "1.0.4.0",
-    "DownloadLinkInstall": "https://github.com/drakos-gg/drakos/releases/download/v1.0.4/Drakos.zip",
-    "DownloadLinkUpdate": "https://github.com/drakos-gg/drakos/releases/download/v1.0.4/Drakos.zip"
+    "AssemblyVersion": "1.0.5.0",
+    "DownloadLinkInstall": "https://github.com/drakos-gg/drakos/releases/download/v1.0.5/Drakos.zip",
+    "DownloadLinkUpdate": "https://github.com/drakos-gg/drakos/releases/download/v1.0.5/Drakos.zip"
   }
 ]
