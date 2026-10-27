@@ -1,43 +1,63 @@
-# v1.0.5
+# v1.0.6
 
 ## Required Environment
 
-- Game patch: FFXIV 7.57
-- Dalamud: v15.0.3.7 (API 15)
+- Game patch: FFXIV 7.57 (hotfix 1)
+- Dalamud: v15.0.3.9 (API 15)
 
 ## Changelog
 
 ### New Features
 
-- **Chat commands.** `/drakos market start`, `/drakos orders start`, `/drakos orders resume`, `/drakos craft <item>` and `/drakos gather <item>` start runs from chat or a macro, and Drakos answers each one in chat. A command Drakos does not know prints the full list. (`4f7fbef05`, `79375c78d`)
-- **Unlock every crafter and gatherer.** `/drakos unlockall` does each crafting and gathering class's guild quests and first class quest, and saves a gearset for it. (`b41a3b7ea`, `de4799235`)
-- **Retainers tab in the desktop app.** See each retainer's gil, listings and venture timers, withdraw all gil, set venture material goals, edit the market watchlist and run an undercut sweep. (`fb37f5659`, `c2d9b700d`)
+- **Grand Company supply deliveries (beta).** Utilities > Grand Company shows today's Supply and Provisioning requests and your seals. Tick jobs, press Start, and Drakos makes what is missing and hands it in. (`1e311fd43`, `aba24e4cd`)
+- **Custom Deliveries hand-ins (beta).** Drakos makes and hands in each recipient's weekly deliveries, holds before a scrip would pass its cap, and Resume picks the run back up. (`be4c831e0`, `8123a60e7`)
+- **Import from Teamcraft and Export to Teamcraft.** New order builder buttons turn a copied list into an order, or copy an import link for the order. (`142e20e7d`)
+- **Leves in the desktop app.** The desktop app's order composer adds levequests by name, class or level, and shows the last leve result. (`5d2c726e3`)
+- **Minimize to a status bar.** The new minimize button shrinks the Drakos window into a small bar with run status and order progress that snaps to a screen corner. (`042fe212f`, `09c30ed62`)
+- **Manual use choice.** The manual setting now offers no manuals, aggressive (swap Engineering and Survival manuals for each task) or conservative. (`4bcd585dc`)
 
 ### Improvements
 
-- When Drakos hands items to an NPC for leves, Potkin or Splendors exchanges, it never gives away a copy one of your gearsets uses or one with materia melded, and it can hand over copies from the Armoury Chest. (`eae4ab529`, `c152d3f27`)
-- You can click the resting sign over your character to hide it. (`428f54b40`)
-- The Saddlebag storage setting is greyed out until you finish My Feisty Little Chocobo. (`826647c9c`)
+- An order refuses to start when a craft or gather needs more Craftsmanship, Control or Perception than the job's gearset reaches, and names each short item. The order's minimum craftsmanship, control and CP setting is gone. (`c4422c3a7`, `38e3a4c2c`)
+- Crafts that use gear as an ingredient pick a free copy from the bags or Armoury Chest, skipping gearset and melded copies. (`86b167ce2`, `0bb9e6436`)
+- Crafting and gathering use the gearset you pick for each job in Drakos settings. (`634c18c58`)
+- Gathering spends GP better. Each gather keeps its own GP share, GP regained while waiting counts, and each node's own yield bonuses are used. (`ce23c1110`, `1f6144243`)
+- Timed nodes are visited in their window, with ordinary gathering filling the time before. (`a9bccab36`)
+- Gathering moves on right after a node ends, without a 2-second pause. (`5834b311d`)
+- Mob farming rests to half HP before each pull, fights back first, and uses each job's quick recovery and mitigation skills. (`047822199`)
+- Rod fishing keeps a collectable only at its top collectability tier. (`8c293c8ba`)
+- Retainer trips use a summoning bell within 50 yalms, such as one in a house or inn room. (`bdf676f71`)
+- Only one sign shows over the character's head at a time, and clicking it shows the next. (`da02a4761`)
+- Logging in no longer freezes the game for a moment while Drakos opens the character. (`2afd8960b`)
+- Messages, holds and logs name items, zones, aetherytes, NPCs, jobs and retainers instead of ID numbers or internal terms. The System panel hides debug lines. (`c0e030c86`, `84f0a63f9`)
+- Melding moved to Utilities, and the Retainers panel is now called Retainer/MB. (`86648ec45`, `866b38a75`)
+- Drakos waits through zone loads and stops with an error when it cannot read the game, instead of guessing. (`6c8f57655`, `aa5a70819`)
+- Stop and Gently Stop no longer cancel rotation solves or order previews. Only Kill does. (`ecea74274`, `e0b657fac`)
 
 ### Fixes
 
-- Inventory space settings now do what the Settings window says. With automatic clearing off, Drakos clears no space, each storage method runs only when ticked, and a failed clearing is retried after a minute instead of half an hour. (`97a22a543`, `88294b4ea`)
-- FATE farming fights back against monsters that attack between FATEs, and finds a landing spot when a flight into a FATE ends in mid-air instead of stopping the farm. (`d928281da`, `b01e27cff`)
-- Miner and Botanist orders turn on Prospect or Triangulate when it is off, so they find their nodes. (`86c8b5854`)
-- An order for an item found only at rocky outcrops or lush vegetation now stops with a message when the Miner or Botanist has no off-hand tool, instead of trying the node again and again. (`4d866efcb`)
-- Leve orders get past a levemete's first-visit explanation pages, and stop instead of pressing anything when the leve menu is gone. (`e2bd1935e`, `aa2ff3d59`)
-- Starting a run while a synthesis is still in progress now asks you to finish or quit it instead of pressing anything. (`67fd719e1`)
-- Eating a meal while another meal is still active no longer counts as a failure. (`4cc552ea9`)
-- Buying gear and other items that do not stack from a vendor no longer gets stuck. (`7aba390c8`)
-- A low-level crafter asked for quality now reaches the quality it can instead of failing. (`6325aa526`)
-- Aethernet trips retry when the game drops the interaction. (`97a22a543`)
-- Retainer sweep log lines name the item instead of showing its ID number. (`97ac40258`)
-- The desktop app no longer misses quick step changes in its gathering, world visit and crafting readouts, and the order composer's title no longer gets cut off. (`171c6f456`, `e8b1855a4`)
+- Non-English clients now handle world visit, retainer, market board, gathering node, summoning bell and Cosmic Exploration prompts. (`b0d77b36b`, `a82bb5278`)
+- Yanxia trips between the north and south halves teleport instead of flying into a cave. (`1d5fd818e`)
+- Diadem walks no longer set off wind pads by accident, and boarding a pad works more often. (`59d89fd48`, `64cfaca71`)
+- Walking to innkeepers, city aetherytes right after a teleport, and estate doors stops in range instead of failing. The Ul'dah inn no longer sends the character behind the counter. (`db8a88b14`, `35bbf722b`)
+- A flight the navigation plugin cannot plan, such as from the ground in Garlemald, no longer fails the run. (`538caeeda`)
+- Gathering waits for the Gathering window under server lag instead of leaving the node. (`7b9fa3cbe`)
+- An order for a node that needs an off-hand tool you lack stops before travelling, with a message. (`35345a6b1`)
+- Each crafter presses its own crafting actions. (`506bc5309`)
+- Crafted counts include Quick Synthesis and the Cosmopouch, so order progress matches what you hold. (`26ba18bb9`)
+- Food and medicine are not used twice when the buff shows late, a second medicine counts as success, and the use-cordials setting is respected. (`e662a1cf1`, `721c38714`)
+- Free Company chest and buff permissions are read correctly, including for Masters, and ventures credit their third reward. (`a46486799`)
+- Orders buy only from vendors the character can reach, and skip Splendors and Gemstone Trader items the vendor does not offer. (`ef868817c`, `e00384ddd`)
+- Retainer withdrawals count every unit taken and say why when they come up short. (`b49708f3c`)
+- Retainer and chest storage keep items an order still needs. (`1fcaa3cca`)
+- Logging out during the license offline grace period no longer stops licensing, and the Kick button for a seat held elsewhere does what it says. (`d3b7c8dae`, `5feb22dd8`)
+- The Custom Deliveries and Grand Company pages refresh when a run ends, so used allowances and today's deliveries show without pressing Read again. (`780410857`)
+- The desktop app keeps item names, saved runs and unsaved settings edits in step with the plugin. (`9eb816f2a`, `fe145561a`)
 
 ### Infrastructure
 
-- Drakos runs on patch 7.57 and Dalamud 15.0.3.7. (`df0d46b22`)
+- Update the desktop app together with the plugin. An older app cannot connect. (`4aedd3850`, `2afd8960b`)
 
 ### In progress
 
-- Cosmic Exploration runs, Ishgard Restoration runs, Leveling to level 5 and Custom Deliveries now have their own tabs, marked work in progress. Custom Deliveries hand-ins have not been tested in the game yet. Grand Company supply deliveries, field gathering leves, gear leves, leveling past level 5 and listing new items from the saddlebag are still being built, and the Selling panel's saddlebag listing option still does nothing. (`a616e73a9`, `caedbcd65`)
+- Leveling now reaches level 10 and stores kept gear in the Armoury Chest, but it and Cosmic and Restoration runs stay marked work in progress. Choosing a source and crafting class per order line, saving a housing plot as home, and manuals for Cosmic, fishing, Diadem and scrip-grind tasks are still being built. The saddlebag listing toggle is hidden until it works. (`6ac8d8ef1`, `be7a97a51`)
