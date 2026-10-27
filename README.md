@@ -24,6 +24,16 @@ Drakos reprices your retainer listings using the undercut amount, price floor, a
 
 Drakos buys materials from market board listings, starting with the lowest prices. You can turn on world hopping and choose which worlds in your data center to shop on. It also buys order materials from NPC vendors and scrip exchanges, and turns in crafted or gathered collectables for scrips.
 
+## Miscellaneous utilities
+
+### GC Deliveries (new in 1.0.6)
+
+<img width="880" height="414" alt="drakos-gc-deliveries" src="https://github.com/user-attachments/assets/1c0765d9-57b0-45b2-9f37-a017da0b747a" />
+
+### Custom Deliveries (new in 1.0.6)
+
+<img width="880" height="430" alt="drakos-custom-deliveries" src="https://github.com/user-attachments/assets/db7a3a3e-94ff-4616-8da8-4a0b1d8683ee" />
+
 ## Combat
 
 Drakos farms materials from supported mobs for your orders.
