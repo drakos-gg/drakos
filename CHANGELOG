@@ -1,4 +1,4 @@
-# v1.0.7
+# v1.0.8
 
 ## Required Environment
 
@@ -7,6 +7,34 @@
 
 ## Changelog
 
+### New Features
+
+- **Add order items from the keyboard.** In the Orders search box, type an item name (add x5 for an amount) and press Enter. The top match joins the order and the box clears for the next item. Item searches in game and in the desktop app now update as you type. (`c5ab0cb1a`)
+- **Status bar anywhere.** Drag the minimized status bar anywhere on screen, and it stays there after a relog. Its new close button hides Drakos while runs keep going, and /drakos brings it back. (`e5c45f7e5`)
+- **Buy with Grand Company seals (beta).** Orders can buy items your quartermaster sells, such as Cordials, when Drakos cannot craft or gather them. Turn it on under Settings > Scheduling > Grand Company seals, and set a seal reserve Drakos will not spend. (`5df6d7023`, `8ed34e916`)
+
+### Improvements
+
+- Timed gathering uses every timed node your Miner and Botanist levels reach, switching jobs between windows. (`ada80487c`)
+- HQ order lines that NQ materials cannot push to max quality now craft HQ intermediates first. When even those fall short, the plan preview says HQ is not guaranteed. (`2233da39e`)
+- Prices and amounts in the Market purchase list, the Selling watchlist and an order line's amount save as you type and accept only digits. (`32dea6809`)
+- Leve refusals say how many copies your inventory and Armoury Chest hold at the required quality. (`cdce7fcc1`)
+- Two settings have new names, "Use Gemstones and farm FATEs" and "Refresh new plan after (minutes)". (`8ed34e916`, `b00bbf0e8`)
+
 ### Fixes
 
-- Drakos no longer stays off after updating from v1.0.5 when a stocking list line has crafting settings. (`379804393`)
+- The crafting food and medicine "min recipe level" now compares the recipe level, such as 690, instead of the job level. Check your saved value, because a job level such as 90 now means recipe level 90. (`1441f768f`)
+- Quick Synthesis runs only when your craftsmanship meets the recipe's recommended craftsmanship, so it no longer fails and loses materials. (`4ae28b7fa`)
+- Sage no longer clips weaves while farming monsters. (`2a80c6a90`)
+- Gathering no longer picks standing spots inside rock, such as at the Peaks Pigment nodes in The Peaks. (`865c60f73`, `3c1c6dc87`)
+- The character walks wherever the game bans mounts, such as inn rooms, instead of getting stuck after the game refuses the mount. (`606424e01`)
+- Monster and FATE farming dismounts before attacking, which fixes deaths right after a farm. A FATE monster that keeps attacking after he leaves the FATE area brings him back in, synced. (`c6dc6ca51`)
+- Low-level Fishers no longer try Chum or Patience II before learning them. (`83f3677cd`)
+
+### Infrastructure
+
+- Update the desktop app together with the plugin. An older app does not see a game running v1.0.8. (`1d92fdba7`)
+
+### In progress
+
+- Leveling and Cosmic stay marked work in progress. Leveling can now sell the junk it made and skips retired collectables, and Cosmic crafters always eat the chosen food. Listing Leveling's HQ gear on retainers and spotting hunt marks are still being built. (`853d6908a`, `2ab2222a2`)
