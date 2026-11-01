@@ -1,4 +1,4 @@
-# v1.0.8
+# v1.0.9
 
 ## Required Environment
 
@@ -9,32 +9,35 @@
 
 ### New Features
 
-- **Add order items from the keyboard.** In the Orders search box, type an item name (add x5 for an amount) and press Enter. The top match joins the order and the box clears for the next item. Item searches in game and in the desktop app now update as you type. (`c5ab0cb1a`)
-- **Status bar anywhere.** Drag the minimized status bar anywhere on screen, and it stays there after a relog. Its new close button hides Drakos while runs keep going, and /drakos brings it back. (`e5c45f7e5`)
-- **Buy with Grand Company seals (beta).** Orders can buy items your quartermaster sells, such as Cordials, when Drakos cannot craft or gather them. Turn it on under Settings > Scheduling > Grand Company seals, and set a seal reserve Drakos will not spend. (`5df6d7023`, `8ed34e916`)
+- **Handle mob attacks.** When a mob attacks during an order, the character fights back if his job has a rotation and the mob is safe to fight. Otherwise he runs until nothing chases him. Either way, he then picks the order back up. (`9d9595b20`, `1c334b7cb`)
+- **Meld onto equipped tools.** A new Melding option puts the plan's main-hand and off-hand materia onto whatever tools he has equipped, so one etro set works across crafting classes. (`0ae466c5b`)
 
 ### Improvements
 
-- Timed gathering uses every timed node your Miner and Botanist levels reach, switching jobs between windows. (`ada80487c`)
-- HQ order lines that NQ materials cannot push to max quality now craft HQ intermediates first. When even those fall short, the plan preview says HQ is not guaranteed. (`2233da39e`)
-- Prices and amounts in the Market purchase list, the Selling watchlist and an order line's amount save as you type and accept only digits. (`32dea6809`)
-- Leve refusals say how many copies your inventory and Armoury Chest hold at the required quality. (`cdce7fcc1`)
-- Two settings have new names, "Use Gemstones and farm FATEs" and "Refresh new plan after (minutes)". (`8ed34e916`, `b00bbf0e8`)
+- Timed gathering waits where he stands, then leaves to land about two minutes before the node opens, instead of hovering at the node or arriving late. (`8bfb39709`)
+- When a run cannot travel somewhere, the message names the place and the reason, such as an aetheryte he has not attuned. (`631dc71cb`)
+- When the game says "Too far away." at an NPC or summoning bell, he moves to another spot and tries again at once, and he always dismounts first. (`aa95fdedd`, `05f3bb201`)
+- Diadem wind pads board more reliably, and pads 17 and 18 now join routes. (`1c3c1fe5c`, `cc6e7479a`)
+- Combat farming follows your Mount-up distance setting. (`1d6ad1c54`)
+- Crafting rotations solve about a quarter faster. (`321fd20f4`)
+- Settings descriptions and panel messages are shorter and clearer, and the food and medicine minimums now say recipe level and node level. (`e93a44f70`, `445f7119d`)
 
 ### Fixes
 
-- The crafting food and medicine "min recipe level" now compares the recipe level, such as 690, instead of the job level. Check your saved value, because a job level such as 90 now means recipe level 90. (`1441f768f`)
-- Quick Synthesis runs only when your craftsmanship meets the recipe's recommended craftsmanship, so it no longer fails and loses materials. (`4ae28b7fa`)
-- Sage no longer clips weaves while farming monsters. (`2a80c6a90`)
-- Gathering no longer picks standing spots inside rock, such as at the Peaks Pigment nodes in The Peaks. (`865c60f73`, `3c1c6dc87`)
-- The character walks wherever the game bans mounts, such as inn rooms, instead of getting stuck after the game refuses the mount. (`606424e01`)
-- Monster and FATE farming dismounts before attacking, which fixes deaths right after a farm. A FATE monster that keeps attacking after he leaves the FATE area brings him back in, synced. (`c6dc6ca51`)
-- Low-level Fishers no longer try Chum or Patience II before learning them. (`83f3677cd`)
+- Orders clear bag space only between tasks, so a craft or gathering task no longer stops partway for Aetherial reduction or Transfer to saddlebag. (`f7670f051`)
+- Crafting no longer fails with "A synthesis is still open." or "Unable to execute command while crafting." after the last craft of a batch. (`d2ce36969`, `93cb60ab9`)
+- The character no longer freezes in a shop after trading at the Collectable Appraiser, the Scrip Exchange or a gemstone trader. (`45ae73f82`)
+- Melding no longer stops with "Unable to execute command under normal conditions." (`1bb41b302`)
+- When Miner and Botanist sit at different levels, each plans gathering with his own level and GP, so the lower one no longer plans actions he has not learned. (`c8fcd1e01`)
+- Gemstone FATE farming stops attacking a FATE's leftover enemies once the FATE ends. (`667ef2178`)
+- Grand Company seal purchases count units already bought, including Ventures, and name your seal floor when seals run short. (`4b7f1582e`)
+- Diadem gathering checks food and medicine against each node's real level instead of level 10. (`d70c3d533`)
+- When no gathering node is in reach, the refusal names the gatherer level you need. (`445f7119d`)
 
 ### Infrastructure
 
-- Update the desktop app together with the plugin. An older app does not see a game running v1.0.8. (`1d92fdba7`)
+- Update the desktop app together with the plugin to see the new Melding option. (`0ae466c5b`)
 
 ### In progress
 
-- Leveling and Cosmic stay marked work in progress. Leveling can now sell the junk it made and skips retired collectables, and Cosmic crafters always eat the chosen food. Listing Leveling's HQ gear on retainers and spotting hunt marks are still being built. (`853d6908a`, `2ab2222a2`)
+- Leveling, Cosmic and Ishgard Restoration stay marked work in progress. Leveling now finishes its level-fifteen stage and can list unused HQ gear on retainers, Cosmic handles first visits and Tool Mastery on Auxesia, and Ishgard Restoration carries on after a death. A FATEs run for Shared FATE ranks and bicolor gemstones has no page yet. (`ae24f0cbf`, `24c6476c9`)
