@@ -1,43 +1,78 @@
-# v1.0.9
+# v1.1.0
 
 ## Required Environment
 
-- Game patch: FFXIV 7.57 (hotfix 1)
-- Dalamud: v15.0.3.9 (API 15)
+- Game patch: FFXIV 7.58
+- Dalamud: v15.0.4.0 (API 15)
 
 ## Changelog
 
 ### New Features
 
-- **Handle mob attacks.** When a mob attacks during an order, the character fights back if his job has a rotation and the mob is safe to fight. Otherwise he runs until nothing chases him. Either way, he then picks the order back up. (`9d9595b20`, `1c334b7cb`)
-- **Meld onto equipped tools.** A new Melding option puts the plan's main-hand and off-hand materia onto whatever tools he has equipped, so one etro set works across crafting classes. (`0ae466c5b`)
+- **A new Drakos window.** Every page sits in one searchable sidebar, every page shows the run bar, and Settings offers three themes: Woven fjords, Frosted glass and High contrast. (`3b88589cf`, `ad615274f`)
+- **Build orders in a table.** One search finds items and leves, you edit amounts and crafting options in place, and the plan updates on its own. (`6ac4af79d`)
+- **Right-click to add to an order.** Right-click an item in your bags, the crafting or gathering log, a chat link, item search or the market board to add it to your order or see what it needs. (`3020d7b30`, `07e980a64`)
+- **FATE farming (beta).** Raise Shared FATE ranks or farm bicolor gemstones from the new FATEs page or Drakos.exe. Orders then buy the Gemstone Trader items your ranks unlock. (`411b36f2c`, `8add83af5`)
+- **Craft at home.** Your crafting spot can be your house, your apartment or a spot in a housing ward, and Drakos gets there by estate teleport, ward aethernet shards and on foot through the yard. (`d31cf01fa`, `c275d3172`)
+- **Restock thresholds.** Set a Restock at amount for each stocked item, so orders refill it only once it drops that low. Restock can also count what sits in your saddlebag and retainers. (`f557376e4`, `d348e4f8d`)
+- **Edit ventures in game.** Add, replace, reorder and remove each retainer's ventures on the Ventures tab. (`85576c27b`)
+- **Squadron manuals.** Orders can use the Engineering and Survival Manuals you hold before crafting or gathering while the job still gains EXP. (`a8b7f9908`)
+- **Disable GPU rendering.** Stop drawing the 3D world to save GPU power while game windows keep updating. (`2d2089a6a`, `e5b2edc37`)
+- **Release highlights.** After an update, Drakos shows the version's biggest changes once. (`ac78e2a57`)
 
 ### Improvements
 
-- Timed gathering waits where he stands, then leaves to land about two minutes before the node opens, instead of hovering at the node or arriving late. (`8bfb39709`)
-- When a run cannot travel somewhere, the message names the place and the reason, such as an aetheryte he has not attuned. (`631dc71cb`)
-- When the game says "Too far away." at an NPC or summoning bell, he moves to another spot and tries again at once, and he always dismounts first. (`aa95fdedd`, `05f3bb201`)
-- Diadem wind pads board more reliably, and pads 17 and 18 now join routes. (`1c3c1fe5c`, `cc6e7479a`)
-- Combat farming follows your Mount-up distance setting. (`1d6ad1c54`)
-- Crafting rotations solve about a quarter faster. (`321fd20f4`)
-- Settings descriptions and panel messages are shorter and clearer, and the food and medicine minimums now say recipe level and node level. (`e93a44f70`, `445f7119d`)
+- Crafting rotations solve faster, most of all for level 100 recipes. (`fa554a2c6`, `355018393`)
+- Gently Stop ends work after the current step, and still finishes what is already under way, such as a hooked fish, a quest hand-in or a gearset save. (`6bdb20bb7`, `ad4343195`)
+- Fishing picks the hole and bait where the target fish bites most often. (`0a1ad8ff5`, `a0a415750`)
+- Drakos catches 10 more Dawntrail fish with Ambitious Lure or Modest Lure. (`5c4aefebb`)
+- Gathering, crafting and combat use only the skills and traits each job has learned, not what his level would allow. (`b2f5273ef`, `e5a3cd378`)
+- Miner and Botanist go only to nodes within their level, and aethersand orders fish or buy the sand when no node fits. (`54c05464c`, `f2117ed7b`)
+- One Diadem entry now gathers several needed materials, uses wind pads when faster, and starts from your Home World. (`640904875`, `dd90fe485`)
+- Drakos walks around obstacles on long routes and through housing wards, and walks through city doors that open as he approaches. (`80817c64a`, `e93b996dd`)
+- Drakos uses aethernet shards in housing wards, Idyllshire, Rhalgr's Reach and The Doman Enclave when that is faster. (`c4bcdc114`, `ee4c1bc87`)
+- When the game says "Too far away." at a market board, Cosmic NPC, delivery NPC, aetheryte or housing door, Drakos moves and tries again. (`839a6fc89`, `3c312d6ce`)
+- Ranged jobs, casters and healers fight from about 15 yalms, dodge AoEs better and stay inside the FATE ring. (`837cd8619`, `fd3efae68`)
+- When his attacks cannot reach an enemy, Drakos moves, tries a ground route, then leaves that enemy alone. (`0a2aadb52`, `f570f9ac5`)
+- DPS jobs buy Gysahl Greens and keep the chocobo out between FATEs. (`18a24d1d9`)
+- Collectables are turned in before Scrip Exchange purchases, and one visit can buy more than 99 of an item. (`74f6658ff`)
+- Leve orders fetch hand-in items from the saddlebag and retainers first, and craft them with Smart HQ. (`aea00e683`)
+- Storage places groups the saddlebag, Armoury Chest and retainer switches, and orders, Restock and the market leave a place you turn off alone. (`ea69e195e`, `342a4ff19`)
+- Crafting orders take gear ingredients out of the Armoury Chest before the first craft. (`a40b8facb`)
+- The market buy list can count saddlebag, retainer and spare Armoury Chest stock. (`10dad9810`)
+- The Inventory, Market and Retainers pages add a searchable inventory, remembered Company Chest contents and a selling watchlist. (`f2c699fd9`)
+- All settings sit on one page with Find a setting, and you save or discard your edits together. (`35229946a`)
+- The Orders page shows whole-order progress, time spent, the current step, why a run is on hold, and why Drakos picked each task. (`4d643fca9`, `a93d891af`)
+- A run that needs you always shows On hold with the reason, and Resume retries every skipped task. (`b5459a9e0`, `f3e9c7a4e`)
+- Orders check saved gearsets before starting and put the gearset back on when its stats differ. (`eaf3c5d7c`)
+- A full Armoury Chest names the full sections and skips only the item that needs that job. (`3b4b0fe94`, `130f25efb`)
+- Orders can start purchases and crafts at your free-slot limit when the results fit stacks you already carry. (`67ba5f5a2`)
 
 ### Fixes
 
-- Orders clear bag space only between tasks, so a craft or gathering task no longer stops partway for Aetherial reduction or Transfer to saddlebag. (`f7670f051`)
-- Crafting no longer fails with "A synthesis is still open." or "Unable to execute command while crafting." after the last craft of a batch. (`d2ce36969`, `93cb60ab9`)
-- The character no longer freezes in a shop after trading at the Collectable Appraiser, the Scrip Exchange or a gemstone trader. (`45ae73f82`)
-- Melding no longer stops with "Unable to execute command under normal conditions." (`1bb41b302`)
-- When Miner and Botanist sit at different levels, each plans gathering with his own level and GP, so the lower one no longer plans actions he has not learned. (`c8fcd1e01`)
-- Gemstone FATE farming stops attacking a FATE's leftover enemies once the FATE ends. (`667ef2178`)
-- Grand Company seal purchases count units already bought, including Ventures, and name your seal floor when seals run short. (`4b7f1582e`)
-- Diadem gathering checks food and medicine against each node's real level instead of level 10. (`d70c3d533`)
-- When no gathering node is in reach, the refusal names the gatherer level you need. (`445f7119d`)
+- World Visits work again after patch 7.58, and the Market lists your data center's Worlds correctly. (`ca1f81b9b`)
+- German, French and Japanese clients no longer stall at Free Company, World Visit, Cosmic or gearset confirmations. (`50de79b26`)
+- Updating Drakos without restarting the game no longer fails to load or keeps old quest, fishing and travel data. (`46a84ea46`)
+- Drakos waits for retainer bags, quantity windows and hand-over windows to finish loading before he uses them. (`6739fc462`, `9277e4eae`)
+- Mid-craft replanning handles Good and Excellent correctly and uses touch combos. (`499a1f86d`, `f31779c55`)
+- Black Mage casts Fire III after three Umbral Hearts, and Ninja finishes mudras started on the last charge. (`d1b80604f`, `7d06997db`)
+- Drakos gets and reads the folklore tome before fishing or gathering that needs it. (`87851912d`)
+- When a job change offers to replace a missing tool, Drakos accepts and saves the gearset. (`feef94a71`, `899ad2365`)
+- Drakos skips the Diadem's first-entry cutscene and reaches the Firmament without Empyreum unlocked. (`932443379`, `272436499`)
+- Drakos returns to your Home World before retainer visits, scrip gathering and unspoiled or legendary nodes. (`e55634584`)
+- Gathering skips an item at 0% and carries on with the rest of the order. (`321da8b93`)
+- A failed teleport says the fee and how much gil you hold. (`cc95e18e7`)
+- A run stopped by a refused action shows Failed with the reason, and a stopped purchase or retainer sweep shows Stopped. (`f3f567ea6`, `35513759d`)
+- Custom deliveries get past a recipient's first-delivery tutorial. (`6e4c46ba8`)
+- Drakos gets off his mount before Aetherial Reduction, self-repair, a craft, feeding his chocobo, a squadron manual or a quest emote. (`fc6e44dc6`)
+- Drakos waits for a Yes/No prompt's text before answering it, such as when entering the Firmament, the Diadem or an apartment room. (`de5f4e26d`)
+- Reloading Drakos no longer leaves the old copy and its solver threads in memory. (`003fba881`, `04f730126`)
 
 ### Infrastructure
 
-- Update the desktop app together with the plugin to see the new Melding option. (`0ae466c5b`)
+- Orders are planned on the Drakos planning server. If it does not answer, the order waits where he stands and carries on once it does. (`d7b00b3b3`, `6d6d2e8f1`)
+- Update the desktop app together with the plugin. (`2a1b44d4a`)
 
 ### In progress
 
-- Leveling, Cosmic and Ishgard Restoration stay marked work in progress. Leveling now finishes its level-fifteen stage and can list unused HQ gear on retainers, Cosmic handles first visits and Tool Mastery on Auxesia, and Ishgard Restoration carries on after a death. A FATEs run for Shared FATE ranks and bicolor gemstones has no page yet. (`ae24f0cbf`, `24c6476c9`)
+- Leveling, Cosmic and Ishgard Restoration stay marked work in progress. Leveling runs its level-five and level-ten stages with class quests, food, manuals and a gil budget per stage. Cosmic runs tool orders toward a target stage, and Restoration orders craft collectables and hand them to Potkin. (`e9d2b2ff1`, `7a655b4d3`)
