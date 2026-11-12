@@ -60,7 +60,7 @@ Drakos also solves rotations for gathering! Unlike other automations, Drakos doe
 
 Hate dealing with retainers? Let Drakos deal with them for you. Drakos undercuts your competitors on your retainers, send out ventures as needed, and even use your retainer inventory as space when it needs a lot of space to handle your orders! Drakos's inventory model means you no longer have to worry about cleaning up space before using Drakos! All these options are, of course, manually adjustable in the Settings.
 
-- **Automatic repricing**: Conquer the market board, and let Drakos automatically undercut your competitors on the market board! Set a selling list so that it never goes below a certain price.
+- **Automatic repricing**: Conquer the market board, and let Drakos automatically undercut your competitors on the market board! Set a selling list so that it never goes below a certain price. You can also set this as a scheduled task that triggers every once in a while while you work on orders!
 - **Automatic listing**: Need to restock the items you're selling on the market board? Drakos automatically lists anything you put on your selling watchlist on your retainers, whereever that is (should you allow it through the Settings.)
 - **Saddlebag usage**: Drakos can automatically use the saddlebag for space and for retrieving materials for crafting.
 - **Retainer usage**: Drakos can automatically use retainers for space and for retrieving materials for crafting.
@@ -82,7 +82,11 @@ Need tome mats for crafting? Tired of hopping over worlds to find what you need?
 
 <img src="assets/h-deliveries.webp" width="880" alt="GC and Custom Deliveries">
 
-Pick the Grand Company Supply and Provisioning requests you want, and Drakos makes what is missing and hands it in.
+Drakos also comes with a whole gamut of utilities that a player might need when they're crafting!
+
+- **Grand Company deliveries**: Just tell Drakos what you'd like to turn in for the day, and Drakos crafts, gathers, and turns in on your behalf!
+- **Custom Deliveries**: Tell Drakos what clients you'd like to rank up with for the week, and Drakos crafts, gathers, and turns in on your behalf! (Note: Drakos currently does not do Custom Delivery quests for you, so you will need to do intro quests by yourself. We're working on that!)
+- **Melding**: Supply Drakos with an etro.gg link of melds, and Drakos melds the character for you automatically with the materias you have in your inventory.
 
 <img width="880" height="414" alt="Drakos hands in Grand Company supply deliveries" src="https://github.com/user-attachments/assets/1c0765d9-57b0-45b2-9f37-a017da0b747a" />
 
@@ -94,13 +98,31 @@ Drakos also makes and hands in each Custom Deliveries recipient's weekly deliver
 
 <img src="assets/h-combat.webp" width="880" alt="Combat and FATEs">
 
-Drakos farms materials from supported mobs for your orders. FATE farming raises your Shared FATE ranks or farms bicolor gemstones.
+Drakos also farms materials for your orders, or use bicolor gemstones if you allow it. You can also use Drakos to grind bicolor gemstones or raise Shared FATE ranks!
+
+- **All combat jobs supported**: You don't need to install a separate combat routine. Drakos has its own internal combat engine that uses powerful spells and skills when farming or doing FATEs.
+- **Avoidance logic**: Drakos automatically avoids AoEs when farming mobs or doing FATEs.
+- **Chocobo support**: Drakos automatically summons chocobos when farming mobs or doing FATEs.
+- **Run away!** Drakos runs away from mobs when it has no way of fighting back, like if you were on a gatherer!
+- **Hunt avoidance**: Drakos avoids S, A, and B-rank hunt mobs when farming mobs.
+- **Grind bicolor gemstones**: You can set Drakos to grind bicolor gemstones.
+- **Raise Shared FATE ranks**: You can set Drakos to raise Shared FATE ranks in various zones.
 
 <br>
 
 <img src="assets/h-chores.webp" width="880" alt="Chores during a run">
 
-Optional hooks repair your gear, keep your food, medicine, and FC buffs active, use EXP manuals, and extract materia from fully spiritbonded gear. A restocking list for each character tops up supplies such as food and medicine before every order.
+Optional hooks repair your gear, and keep your food, medicine, and FC buffs active. You can also set up a restocking list that tops up supplies, like dark matter or medicine, before every order.
+
+- **Stocking list**: Set up a restocking list that you want Drakos to run before every order! Don't worry about needing to buy hi-cordials or Dark Matter anymore!
+- **Automatic repairs**: Drakos is able to either use self-repair (if you have the dark matter) or visit a vendor to repair, whenever it needs to.
+- **Automatic manuals**: Drakos is able to use manuals for EXP automatically.
+- **Materia extraction**: Drakos automatically extract materia from spiritbonded gear while working on orders.
+- **FC buff activation and purchases**: Drakos can automatically activate FC buffs or purchase FC buffs while working on orders. (Note: this feature is turned off by default for safety reasons.)
+- **Inventory storage**: Drakos can automatically store items in retainers and saddlebags if it is running out on space. (Note: this feature is turned off by default for safety reasons.)
+- **Home spot**: You can set a home spot for Drakos to use for crafting and when it has nothing to do. If you set it in your house, it automatically knows to enter your house to craft! (Note: Drakos may struggle to reach certain spots in your house if it's blocked by too much furniture.)
+- **Automatic resting**: Drakos can automatically pause and rest for the day after a certain amount of work.
+- **Scheduled undercuts and ventures**: While working on orders, you can also let Drakos undercut or manage ventures every X minute that you set.
 
 <p align="center"><a href="https://drakos.gg/features/"><img src="assets/btn-all-features.png" height="56" alt="All Drakos features"></a></p>
 
