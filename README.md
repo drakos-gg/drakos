@@ -130,14 +130,15 @@ Optional hooks repair your gear, and keep your food, medicine, and FC buffs acti
 
 <img src="assets/h-how.webp" width="880" alt="How it works">
 
-Crafting and gathering in FFXIV are mathematical optimization problems, and Drakos treats them that way. The rotations in guides are written for a human with scarce working memory. Drakos does not follow them. It *solves* each craft, each node, and the whole order with dynamic programming, reinforcement learning, and Monte Carlo methods.
+Crafting and gathering in FFXIV are mathematical optimization problems under their core. Drakos does not follow rotations in guides because they are written for a human with scarce working memory. Instead, it *solves* each craft, each gathering node, and even the whole order to maximize efficiency.
 
 <img src="assets/arch-loop.png" width="880" alt="Drakos expands an order into tasks, schedules them, solves each task, acts one step at a time in the game, and plans again after each task.">
 
-- **One order becomes a task graph**: Drakos expands what you ordered into every craft, gather, and purchase it takes, down to the raw materials, and subtracts what you already hold.
-- **A solver schedules the work**: The scheduler finds the tasks that hold everything else up, routes the timed nodes into their windows, and fills the gaps between them with the work that saves the most time. While it does that, it simulates your GP, inventory, food, and travel.
-- **Every task gets its own solver**: A craft gets a solved rotation. A node gets a solved rotation and a GP budget. A scrip run gets a solved route.
+- **DAG Planner**: Drakos expands what you ordered into all the dependencies that it needs. This dependency graph contain information on prerequisites like folklore tomes, or the HQ counts required, so that Drakos tells you up front what is blocking the orders.
+- **Scheduler solver**: The scheduler calculates what is the biggest bottleneck of your orders and prioritizes the bottleneck. It goes through tasks that bottleneck the most, and then fill the remaining gaps with work that saves the most time.
+- **Every task gets its own solver**: Drakos solves for the optimal rotation for your crafts. Drakos also solves for the best collectability rotation at the node. Drakos even solves for which nodes to visit when scrip grinding!
 - **Drakos plans again after each task**: The plan never goes stale. What you hold now, what Drakos just made, and which timed node just spawned all go into the next decision.
+- **Even navigation has a solver**: Drakos navigates nodes with a TSP (with neighborhoods) algorithm. For some node clusters, this means seconds saved per round on travel.
 
 <img src="assets/arch-schedule.png" width="880" alt="An illustrated schedule. Drakos gathers, visits a timed node while its window is open, farms mobs and crafts while GP comes back, then visits the next timed node.">
 
@@ -146,15 +147,15 @@ Crafting and gathering in FFXIV are mathematical optimization problems, and Drak
 | What Drakos decides | How it solves it |
 |---|---|
 | The rotation for a craft | Rapidium searches the craft's states best-first and drops every branch that provably cannot beat the best rotation it has found. |
-| What to press on a gathering node | A solver over your GP, the node's integrity, and your buffs returns the best rotation for every GP budget. |
-| How much GP each visit gets | Backward induction over the visits ahead, so Drakos does not burn GP now that is worth more at the next node. |
-| How to get the most scrips from a collectable | Drakos solves the collectable in two stages and stores the answer as a compact decision diagram, which it looks up at every step. |
+| What to press on a gathering node | Yield solvers are also DP solvers that take into account node buffs and the GP budget assigned by the scheduler. |
+| How much GP each visit gets | Backward induction over the visits ahead. |
+| How to get the most scrips from a collectable | Drakos solves the collectable in two stages, then stores the answer as a compact decision diagram, which it looks up at every step. |
 | Which nodes to visit, in which order | Exact dynamic programming for the node groups in a zone, and prize-collecting routing for timed nodes. |
 | Expert recipes | A neural network, trained by reinforcement learning on hundreds of millions of simulated crafting steps, plays the random conditions. An exact solver takes over as soon as a guaranteed finish exists. |
 
-- **Exact where it can be, fast where it must be**: A perfect answer that arrives after the node despawns is worth nothing. For collectables, Drakos schedules with a fast approximate answer and gathers with the full solution.
-- **Written in Rust**: The heavy solvers are native Rust. The crafting solver runs on half of your CPU cores by default, so the game keeps the rest.
-- **Solved once**: Drakos saves solved rotations to disk and shares them between your characters. Two recipes that craft identically share one solved rotation.
+- **Exact where it can be, fast where it must be**: A perfect answer that arrives after the node despawns is worth nothing. For time-critical tasks, Drakos schedules with a fast approximate answer and gathers with the full solution.
+- **Written in Rust**: Drakos's solvers are written in Rust for maximal performance. You would likely not even notice!
+- **Solved once**: Drakos's caching system means that for most solves, you only have to solve once!
 
 <br>
 
