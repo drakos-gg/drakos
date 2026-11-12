@@ -130,12 +130,31 @@ Optional hooks repair your gear, and keep your food, medicine, and FC buffs acti
 
 <img src="assets/h-how.webp" width="880" alt="How it works">
 
-<img src="assets/how-it-works.png" width="880" alt="The Drakos plugin runs on your PC inside FFXIV and Dalamud. It sends each order to the Drakos planning server, gets a plan back, and checks your license key with the license server.">
+Crafting and gathering in FFXIV are mathematical optimization problems, and Drakos treats them that way. The rotations in guides are written for a human with scarce working memory. Drakos does not follow them. It *solves* each craft, each node, and the whole order with dynamic programming, reinforcement learning, and Monte Carlo methods.
 
-1. **Just add items to your orders.** The Drakos plugin runs inside the game through Dalamud. Drakos.exe is a desktop app that controls the same plugin.
-2. **The planning server plans the order.** The plugin sends the order to the Drakos planning server, which answers with what to gather, buy, and craft, and in what order. If the server does not answer, the order waits and carries on once it does.
-3. **The plugin does the work on your PC.** It solves each crafting and gathering rotation on your PC and moves your character with [vnavmesh](https://github.com/awgil/ffxiv_navmesh).
-4. **The license server checks your key.** While Drakos runs, it checks in with the license server every 10 seconds. If it loses the server for 30 seconds, it finishes its current step and stops.
+<img src="assets/arch-loop.png" width="880" alt="Drakos expands an order into tasks, schedules them, solves each task, acts one step at a time in the game, and plans again after each task.">
+
+- **One order becomes a task graph**: Drakos expands what you ordered into every craft, gather, and purchase it takes, down to the raw materials, and subtracts what you already hold.
+- **A solver schedules the work**: The scheduler finds the tasks that hold everything else up, routes the timed nodes into their windows, and fills the gaps between them with the work that saves the most time. While it does that, it simulates your GP, inventory, food, and travel.
+- **Every task gets its own solver**: A craft gets a solved rotation. A node gets a solved rotation and a GP budget. A scrip run gets a solved route.
+- **Drakos plans again after each task**: The plan never goes stale. What you hold now, what Drakos just made, and which timed node just spawned all go into the next decision.
+
+<img src="assets/arch-schedule.png" width="880" alt="An illustrated schedule. Drakos gathers, visits a timed node while its window is open, farms mobs and crafts while GP comes back, then visits the next timed node.">
+
+<img src="assets/arch-methods.webp" width="880" alt="Drakos solves with dynamic programming, reinforcement learning, and Monte Carlo methods.">
+
+| What Drakos decides | How it solves it |
+|---|---|
+| The rotation for a craft | Rapidium searches the craft's states best-first and drops every branch that provably cannot beat the best rotation it has found. |
+| What to press on a gathering node | A solver over your GP, the node's integrity, and your buffs returns the best rotation for every GP budget. |
+| How much GP each visit gets | Backward induction over the visits ahead, so Drakos does not burn GP now that is worth more at the next node. |
+| How to get the most scrips from a collectable | Drakos solves the collectable in two stages and stores the answer as a compact decision diagram, which it looks up at every step. |
+| Which nodes to visit, in which order | Exact dynamic programming for the node groups in a zone, and prize-collecting routing for timed nodes. |
+| Expert recipes | A neural network, trained by reinforcement learning on hundreds of millions of simulated crafting steps, plays the random conditions. An exact solver takes over as soon as a guaranteed finish exists. |
+
+- **Exact where it can be, fast where it must be**: A perfect answer that arrives after the node despawns is worth nothing. For collectables, Drakos schedules with a fast approximate answer and gathers with the full solution.
+- **Written in Rust**: The heavy solvers are native Rust. The crafting solver runs on half of your CPU cores by default, so the game keeps the rest.
+- **Solved once**: Drakos saves solved rotations to disk and shares them between your characters. Two recipes that craft identically share one solved rotation.
 
 <br>
 
