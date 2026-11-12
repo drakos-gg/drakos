@@ -6,9 +6,9 @@
 
 </div>
 
-# Drakos, an FFXIV crafting bot
+# Drakos
 
-Drakos is an [FFXIV crafting bot](https://drakos.gg/ffxiv-crafting-bot/). It runs as a Dalamud plugin for Final Fantasy XIV. Add the items you want to an order, and Drakos works out what to craft, gather, and buy, then does the work.
+Drakos [helps you automate crafting, gathering, market board, and far more](https://drakos.gg/ffxiv-crafting-bot/). It runs as a Dalamud plugin for Final Fantasy XIV. Give Drakos the orders, whether it's levequests or GC deliveries or Cosmic tool progress, and Drakos figures out everything for you, at mach speed.
 
 <a href="https://www.youtube.com/watch?v=ZSbmGxxZPAw"><img src="assets/demo-orders.webp" width="880" alt="Watch the Drakos Orders Demo on YouTube"></a>
 
@@ -18,7 +18,12 @@ Drakos is an [FFXIV crafting bot](https://drakos.gg/ffxiv-crafting-bot/). It run
 
 <img src="assets/h-orders.webp" width="880" alt="Orders">
 
-Drakos plans each order from the finished items you add. It counts the materials you already have, decides what to craft, gather, or buy, and schedules the work around timed nodes and travel. It also works out which intermediates need to be HQ to reach your quality target. You can put orders into groups that run in sequence, and import or export order lists.
+Drakos comes with an intelligent planner and scheduler that counts the materials you already have, and decides how to schedule the work to fulfill your requests. Unlike traditional planners and schedulers, Drakos's scheduler actually *solves* for an optimal schedule for your tasks. You will see Drakos farming mobs for materials while GP regenerates, then burn that GP on timed nodes.
+
+- **Automatic timed node scheduling**: You don't need to keep an alarm on or write down a schedule with Drakos! Drakos knows which timed nodes it needs to visit to complete your requests. It intelligently creates tasks for those timed nodes and visits them when they spawn.
+- **Automatic HQ materials**: Don't have the best gear? Never fear! Drakos automatically calculates how much HQ materials it needs to ensure that you can HQ your orders, every time!
+- **Intelligent GP management**: GP is a scarce resource, and Drakos is aware of that! When scheduling, it finds the optimal way to use your GP by forecasting your GP (cordial usage included!) and then solving for the best set of tasks to do to maximize the mileage you get out of your GP.
+- **Import and export (including Teamcraft)**: Need to share a long list of orders with a friend? Just export it as a .JSON! Or, you can also import and export orders from Teamcraft, and let Drakos take care of the rest!
 
 <img src="assets/drakos-order-and-plan.gif" width="880" alt="Drakos plans an order for HQ Stuffed Peppers and Hi-Cordials">
 
@@ -26,29 +31,52 @@ Drakos plans each order from the finished items you add. It counts the materials
 
 <img src="assets/h-crafting.webp" width="880" alt="Crafting">
 
-Drakos solves a rotation for your stats, starting quality, and HQ or collectability target, and adjusts it when the condition turns Good or Excellent. You can preview the rotation before you start. The crafting solver is based on [raphael-rs](https://github.com/KonaeAkira/raphael-rs).
+Drakos solves a rotation for your stats, starting quality, and HQ or collectability target, and adjusts it when the condition turns Good or Excellent. Our crafting solver, Rapidium, is based on [raphael-rs](https://github.com/KonaeAkira/raphael-rs), with custom optimizations and speedups that make it even better and faster! And, you no longer have to worry about turning in collectables to buy scrip items! Just order that scrip item directly!
+
+- **Guaranteed optimal solution**: Find the *minimum-step* rotation every single time with Rapidium!
+- **Automatic caching**: Already solved the rotation before? Drakos automatically caches the results so you don't have to spend time solving it again!
+- **Take advantage of Good and Excellent procs**: Rapidium also re-solves when it sees a Good or Excellent proc, shaving more steps from your rotation! This makes crafting faster by around 15% compared to crafting automations that do not take procs into account.
+- **Purchase scrip items automatically**: Need a lot of scrip items to make raid food? Don't worry! Just order the food, and Drakos will craft collectables and buy the scrip items itself!
 
 <img src="assets/drakos-hq-craft.gif" width="880" alt="Drakos crafts HQ Stuffed Peppers">
+
+<img src="assets/drakos-scrip-exchange.gif" width="880" alt="Drakos buys order materials at the Scrip Exchange">
 
 <br>
 
 <img src="assets/h-gathering.webp" width="880" alt="Gathering and fishing">
 
-Drakos travels to regular, timed, and ephemeral nodes and solves a rotation for item yield or collectability from your stats, current GP, and the node's bonuses. For timed scrip routes and aethersand runs, it chooses which nodes to visit and plans GP and cordial use across the run. It also catches supported rod fish and reduces collectables into aethersands.
+Drakos also solves rotations for gathering! Unlike other automations, Drakos does not rely on hard-coded strategies to gather your items. It solves for item yield, collectability, or aethersand yield based on your stats, current GP, and the node's bonuses. For timed scrip routes and aethersands, it also *chooses* which nodes to visit based on how much it expects that node to provide per GP and time spent. It also catches fish and reduces collectables into aethersands automatically.
+
+- **Automatic aethersand reduction**: You don't need to manually reduce your collectables. Drakos takes care of that automatically!
+- **Lightning-fast gathering scrip grinding**: Unlike other automations, Drakos actually weighs the expected benefit from each timed collectable node to visit. Against Lisbeth, [Drakos is 20.8% faster at getting hi-cordials](https://drakos.gg/comparelisbeth/)!
+- **Automatic fishing**: You don't need to pilot your character to a spot to fish. Drakos goes to a fishing spot for you automatically!
+- **Node bonus-aware**: Drakos dynamically adjusts its rotation based on the node bonuses it sees. It takes advantage of those bonuses, leading to greater yield per hour.
+- **Intelligent cordial usage**: Because Drakos's scheduler takes cordial usage into account when forecasting your GP usage, you will find that Drakos seems to always use cordials just in time... that's intended!
 
 <br>
 
 <img src="assets/h-retainers.webp" width="880" alt="Retainers and inventory">
 
-Drakos reprices your retainer listings using the undercut amount, price floor, and ceiling you set. A selling watchlist sets the items and quantities to sell, and Drakos posts available stock to retainers with free listing slots. It withdraws gil from your retainers after each undercut round. It can also move items you don't need into your saddlebag, retainers, or FC chest, and it retrieves materials from your saddlebag and retainers when an order needs them.
+Hate dealing with retainers? Let Drakos deal with them for you. Drakos undercuts your competitors on your retainers, send out ventures as needed, and even use your retainer inventory as space when it needs a lot of space to handle your orders! Drakos's inventory model means you no longer have to worry about cleaning up space before using Drakos! All these options are, of course, manually adjustable in the Settings.
+
+- **Automatic repricing**: Conquer the market board, and let Drakos automatically undercut your competitors on the market board! Set a selling list so that it never goes below a certain price.
+- **Automatic listing**: Need to restock the items you're selling on the market board? Drakos automatically lists anything you put on your selling watchlist on your retainers, whereever that is (should you allow it through the Settings.)
+- **Saddlebag usage**: Drakos can automatically use the saddlebag for space and for retrieving materials for crafting.
+- **Retainer usage**: Drakos can automatically use retainers for space and for retrieving materials for crafting.
+- **FC chest**: Drakos can automatically dump items into your FC chest. **Drakos does not retrieve items from your FC chest for safety reasons.**
+- **Automatic deposits and retrievals**: Short on inventory space? Do not worry! Drakos automatically deposits and retrieves items as needed from your retainers and saddlebag! (Note: this feature is not turned on by default for safety reasons.) You can also set which retainers Drakos should have access to and which it should never use for inventory!
 
 <br>
 
 <img src="assets/h-market.webp" width="880" alt="Market board and vendors">
 
-Drakos buys materials from market board listings, starting with the lowest prices. You can turn on world hopping and choose which worlds in your data center to shop on. It also buys order materials from NPC vendors and scrip exchanges, and turns in crafted or gathered collectables for scrips.
+Need tome mats for crafting? Tired of hopping over worlds to find what you need? Let Drakos buy materials for you!
 
-<img src="assets/drakos-scrip-exchange.gif" width="880" alt="Drakos buys order materials at the Scrip Exchange">
+- **Automatic world hopping**: Let Drakos visit other worlds to buy the materials it needs, if it cannot find it on your home world.
+- **Price ceilings for purchases**: Set a ceiling, and Drakos will never exceed that amount when buying the items you need.
+- **Automatic inventory awareness**: Drakos checks your inventory, saddlebag, and retainers to buy exactly the items you need to restock to a certain amount. (Note: this feature is not turned on by default.)
+- (coming soon) **Intelligent world hopping**: Drakos solves for the best worlds to visit by checking prices on Universalis. It takes into account possible staleness and dynamically adjust worlds if the prices it sees are different from what it saw on Universalis!
 
 <br>
 
@@ -66,7 +94,7 @@ Drakos also makes and hands in each Custom Deliveries recipient's weekly deliver
 
 <img src="assets/h-combat.webp" width="880" alt="Combat and FATEs">
 
-Drakos farms materials from supported mobs for your orders. FATE farming (beta) raises your Shared FATE ranks or farms bicolor gemstones.
+Drakos farms materials from supported mobs for your orders. FATE farming raises your Shared FATE ranks or farms bicolor gemstones.
 
 <br>
 
@@ -82,7 +110,7 @@ Optional hooks repair your gear, keep your food, medicine, and FC buffs active, 
 
 <img src="assets/how-it-works.png" width="880" alt="The Drakos plugin runs on your PC inside FFXIV and Dalamud. It sends each order to the Drakos planning server, gets a plan back, and checks your license key with the license server.">
 
-1. **You add items to an order.** The Drakos plugin runs inside the game through Dalamud. Drakos.exe is a desktop app that controls the same plugin.
+1. **Just add items to your orders.** The Drakos plugin runs inside the game through Dalamud. Drakos.exe is a desktop app that controls the same plugin.
 2. **The planning server plans the order.** The plugin sends the order to the Drakos planning server, which answers with what to gather, buy, and craft, and in what order. If the server does not answer, the order waits and carries on once it does.
 3. **The plugin does the work on your PC.** It solves each crafting and gathering rotation on your PC and moves your character with [vnavmesh](https://github.com/awgil/ffxiv_navmesh).
 4. **The license server checks your key.** While Drakos runs, it checks in with the license server every 10 seconds. If it loses the server for 30 seconds, it finishes its current step and stops.
@@ -96,7 +124,7 @@ Optional hooks repair your gear, keep your food, medicine, and FC buffs active, 
 3. **Sign in with your key.** Find your license key on your [account page](https://drakos.gg/accounts/). Open `/drakos`, save your key, and sign in.
 4. **Add your first order.** Choose what you want to craft or gather, then start the order.
 
-Drakos needs Windows 10 or 11 (64-bit) and the English FFXIV client. The [pricing page](https://drakos.gg/pricing/) lists the current plans.
+Drakos currently officially supports Windows 10 or 11 (64-bit). Users on Linux or MacOS may see occasional bugs.
 
 <p align="center"><a href="https://drakos.gg/installation/"><img src="assets/btn-install-lg.png" height="64" alt="Installation guide"></a><a href="https://drakos.gg/pricing/"><img src="assets/btn-pricing-lg.png" height="64" alt="Pricing"></a><a href="https://drakos.gg/accounts/"><img src="assets/btn-account-lg.png" height="64" alt="Your account"></a></p>
 
